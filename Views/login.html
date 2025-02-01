@@ -11,6 +11,20 @@
 </head>
 
 <body>
+    <!-- Modal de error -->
+    <div id="modalOverlay" class="modal-overlay">
+        <div class="modal">
+            <span class="close-button" onclick="closeModal()">×</span>
+            <p>Correo electrónico o contraseña incorrectos. Inténtalo de nuevo.</p>
+        </div>
+    </div>
+    <!-- Modal de login -->
+    <div id="modalOverlayLogin" class="modal-overlay">
+        <div class="modal">
+            <span class="close-button" onclick="closeModalLogin()">×</span>
+            <p>INICIO EXITOSO Redirigiendo...</p>
+        </div>
+    </div>
     <header>
         <nav>
             <div class="logo-container">
@@ -61,16 +75,63 @@
     <script src="JS/index.js"></script>
     <script>
         // Función para cerrar el modal
+    function closeModal() {
+        document.getElementById('modalOverlay').style.display = 'none';
+    }
+
+    // Mostrar el modal si 'error=1' está en la URL
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('error') === '1') {
+        document.getElementById('modalOverlay').style.display = 'block';
+    }
+    </script>
+    <script>
+        // Función para cerrar el modal
         function closeModal() {
             document.getElementById('modalOverlay').style.display = 'none';
         }
-
+    
         // Mostrar el modal si 'error=1' está en la URL
         const urlParams = new URLSearchParams(window.location.search);
         if (urlParams.get('error') === '1') {
             document.getElementById('modalOverlay').style.display = 'block';
         }
     </script>
+    
+    <script>
+
+        // Función para cerrar el modal
+        function closeModalLogin() {
+            document.getElementById('modalOverlayLogin').style.display = 'none';
+        }
+        // Mostrar el modal si 'error=1' está en la URL obtiene la respuesta del php login
+        const urlParamsLogin = new URLSearchParams(window.location.search);
+        if (urlParamsLogin.get('success') === 'admin') {
+            document.getElementById('modalOverlayLogin').style.display = 'block';
+            setTimeout(() => {
+                window.location.href = "../ViewsAdmin/menuAdmin.html";
+            }, 3000);
+        }
+        if (urlParamsLogin.get('success') === 'user') {
+            document.getElementById('modalOverlayLogin').style.display = 'block';
+            setTimeout(() => {
+                window.location.href = "../ViewsDocente/menuDocente.html";
+            }, 3000);
+        }
+        if (urlParamsLogin.get('success') === 'academico') {
+            document.getElementById('modalOverlayLogin').style.display = 'block';
+            setTimeout(() => {
+                window.location.href = "../ViewsAcademico/menuAcademico.html";
+            }, 3000);
+        }
+        if (urlParamsLogin.get('success') === 'jefe de division') {
+            document.getElementById('modalOverlayLogin').style.display = 'block';
+            setTimeout(() => {
+                window.location.href = "../ViewsJDivision/menuJDivision.html";
+            }, 3000);
+        }
+    </script>
+    
 
 </body>
 

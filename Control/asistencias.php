@@ -1,13 +1,21 @@
 <?php
-include '../Control/dbConection.php';
+
+include '../Control/conexionBD.php';
 $pdo = conectarBD();
 
 
 // Establecer el encabezado para JSON
 header('Content-Type: application/json');
+$stmt = $pdo->query('
+            SELECT *
+            FROM preguntas');
+
+// Obtener los resultados
+$asistencias = $stmt->fetchAll(PDO::FETCH_ASSOC);
+echo json_encode($asistencias); // Devolver los datos como JSON
 
 // Obtener las asistencias por fecha
-if (isset($_GET['filter'])) {
+/*if (isset($_GET['filter'])) {
     $filter = $_GET['filter'];
 
     // Si el filtro es "todos", obtener todos los registros
@@ -32,5 +40,4 @@ if (isset($_GET['filter'])) {
     // Obtener los resultados
     $asistencias = $stmt->fetchAll(PDO::FETCH_ASSOC);
     echo json_encode($asistencias); // Devolver los datos como JSON
-}
-?>
+}*/

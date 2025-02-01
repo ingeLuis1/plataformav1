@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900"
-        rel="stylesheet">
+          rel="stylesheet">
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="../static/vendor/bootstrap/css/bootstrap.min.css">
     <!-- Additional CSS Files -->
@@ -16,63 +16,63 @@
 </head>
 
 <body>
-    <header class="main-header clearfix" role="header">
-        <div class="logo">
-            <div class="header-logo">
-                <a href="#"><em>CONIINT</em> 2024</a>
-                <img src="../static/assets/Logo/fondo.png" alt="Logo" class="logo-small">
-            </div>
-        </div>
-
-        <a href="#menu" class="menu-link"><i class="fa fa-bars"></i></a>
-        <nav id="menu" class="main-nav" role="navigation">
-            <ul class="main-menu">
-                <li><a href="constancia.php">Constancias</a></li>
-                <li><a href="altaAlumno.html">Alta Alumno</a></li>
-                <li class="has-submenu"><a href="#" class="filter-btn" data-filter="todos">CONGRESO</a>
-                    <ul class="sub-menu">
-                        <li><a href="#" class="filter-btn" data-filter="26-11-2024">INAUGURACION</a></li>
-                        <li><a href="#" class="filter-btn" data-filter="27-11-2024">DIA 2</a></li>
-                        <li><a href="#" class="filter-btn" data-filter="28-11-2024">DIA 3</a></li>
-                        <li><a href="#" class="filter-btn" data-filter="29-11-2024">Clausura</a></li>
-                    </ul>
-                </li>
-
-            </ul>
-        </nav>
-    </header>
-
-
-    <div class="titulo">
-        <h1><em>ASISTENCIAS</em>
-        </h1>
-        <span>Segundo Congreso Nacional de Ingeniería Informática<i class="fa fa-heart"></i></span>
-    </div>
-    <div class="container-fluid">
-        <div class="table-responsive"> <!-- Agrega esta clase -->
-            <table class="table table-bordered table-striped">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Num. Tarjeta</th>
-                        <th>Num. Matricula</th>
-                        <th>Nombre completo</th>
-                        <th>Entrada</th>
-                        <th>Hora</th>
-                        <th>Día</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-
-                </tbody>
-            </table>
+<header class="main-header clearfix" role="header">
+    <div class="logo">
+        <div class="header-logo">
+            <a href="#"><em>Academia II</em> 2024</a>
+            <img src="../static/assets/Logo/fondo.png" alt="Logo" class="logo-small">
         </div>
     </div>
 
-    </tbody>
-    </table>
+    <a href="#menu" class="menu-link"><i class="fa fa-bars"></i></a>
+    <nav id="menu" class="main-nav" role="navigation">
+        <ul class="main-menu">
+            <li><a href="constancia.php">Constancias</a></li>
+            <li><a href="altaAlumno.html">Alta Alumno</a></li>
+            <li class="has-submenu"><a href="#" class="filter-btn" data-filter="todos">CONGRESO</a>
+                <ul class="sub-menu">
+                    <li><a href="#" class="filter-btn" data-filter="26-11-2024">INAUGURACION</a></li>
+                    <li><a href="#" class="filter-btn" data-filter="27-11-2024">DIA 2</a></li>
+                    <li><a href="#" class="filter-btn" data-filter="28-11-2024">DIA 3</a></li>
+                    <li><a href="#" class="filter-btn" data-filter="29-11-2024">Clausura</a></li>
+                </ul>
+            </li>
+
+        </ul>
+    </nav>
+</header>
+
+
+<div class="titulo">
+    <h1><em>ASISTENCIAS</em>
+    </h1>
+    <span>Segundo Congreso Nacional de Ingeniería Informática<i class="fa fa-heart"></i></span>
+</div>
+<div class="container-fluid">
+    <div class="table-responsive"> <!-- Agrega esta clase -->
+        <table class="table table-bordered table-striped">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Num. Tarjeta</th>
+                <th>Num. Matricula</th>
+                <th>Nombre completo</th>
+                <th>Entrada</th>
+                <th>Hora</th>
+                <th>Día</th>
+                <th>Acciones</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
     </div>
+</div>
+
+</tbody>
+</table>
+</div>
 </body>
 <script>
     // Alternar la visibilidad del menú en pantallas pequeñas
@@ -92,13 +92,13 @@
     let filtro = "";
     let baseURL = window.location.origin;  // Obtiene la URL base del servidor
 
-    let url = baseURL + "/CONAIINT/Control/asistencias.php?filter=todos";
+    let url = baseURL + "/plataformav1/Control/asistencias.php?filter=todos";
 
 
     function updateTable() {
         console.log("Ejecutando updateTable");
         if (filtro != "") {
-            url = baseURL + "/Control/asistencias.php?filter=" + filtro;
+            url = baseURL + "/plataformav1/Control/asistencias.php?filter=" + filtro;
         }
         console.log("Enviando datos a");
         console.log(url);
@@ -116,17 +116,14 @@
                 if (data.length > 0) {
                     data.forEach(asistencia => {
                         const row = document.createElement('tr');
-                        row.innerHTML = 
-                `
-                    <td>${asistencia.alumno_id}</td>
-                    <td>${asistencia.ncredencial}</td>
-                    <td>${asistencia.matricula}</td>
-                    <td>${asistencia.nombre} ${asistencia.apellidoP} ${asistencia.apellidoM}</td>
-                    <td>${asistencia.fecha}</td>
-                    <td>${asistencia.hora}</td>
-                    <td>${asistencia.dia}</td>
+                        row.innerHTML =
+                            `
+                    <td>${asistencia.idPregunta}</td>
+                    <td>${asistencia.pregunta}</td>
+                    <td>${asistencia.idIndicador}</td>
+                    <td>${asistencia.aceptable}</td>
                     <td><button> </td>
-                    
+
                 `;
                         tableBody.prepend(row);
                     });

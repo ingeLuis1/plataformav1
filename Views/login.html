@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="es">
 
@@ -8,12 +9,25 @@
     <!-- Ruta correcta para vincular el archivo CSS -->
     <link href="../CSS/sis.css" rel="stylesheet" />
     <title></title>
+=======
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../static/assets/css/sis.css">
+    <title>CONAIINT</title>
+>>>>>>> 5fda9bbc85f7314c1b461ea993f0fafdb40a3255
 </head>
 
 <body>
     <!-- Modal de error -->
     <div id="modalOverlay" class="modal-overlay">
         <div class="modal">
+<<<<<<< HEAD
             <span class="close-button" onclick="closeModal()">×</span>
             <p>Correo electrónico o contraseña incorrectos. Inténtalo de nuevo.</p>
         </div>
@@ -49,6 +63,8 @@
     <!-- Modal de error -->
     <div id="modalOverlay" class="modal-overlay">
         <div class="modal">
+=======
+>>>>>>> 5fda9bbc85f7314c1b461ea993f0fafdb40a3255
             <span class="close-button" onclick="closeModal()">X</span>
             <p>Usuario</p>
         </div>
@@ -56,6 +72,7 @@
 
     <div class="container">
         <div class="info">
+<<<<<<< HEAD
             <h1><em>Inicio de Sesión</em></h1><span>Academia Ingeniería Informática</i>
             </span>
         </div>
@@ -76,6 +93,25 @@
     <script src="JS/index.js"></script>
     <script>
         // Función para cerrar el modal
+=======
+            <h1><em>Grupos de interés</em></h1><span>Segundo Congreso Nacional de Ingeniería Informática</i>
+            </span>
+        </div>
+    </div>
+    <div class="form">
+        <div class="thumbnail"><img src="../static/assets/Logo/fondo.png" /></div>
+        <form class="login-form" method="post" action="../Control/login.php">
+            <input type="text" placeholder="username" name="user" />
+            <input type="password" placeholder="password" name="pass" />
+            <button type="submit">login</button>
+        </form>
+    </div>
+
+
+</body>
+<script>
+    // Función para cerrar el modal
+>>>>>>> 5fda9bbc85f7314c1b461ea993f0fafdb40a3255
     function closeModal() {
         document.getElementById('modalOverlay').style.display = 'none';
     }
@@ -85,6 +121,7 @@
     if (urlParams.get('error') === '1') {
         document.getElementById('modalOverlay').style.display = 'block';
     }
+<<<<<<< HEAD
     </script>
     <script>
         // Función para cerrar el modal
@@ -136,4 +173,7 @@
 
 </body>
 
+=======
+</script>
+>>>>>>> 5fda9bbc85f7314c1b461ea993f0fafdb40a3255
 </html>

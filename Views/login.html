@@ -11,20 +11,26 @@
 </head>
 
 <body>
-    <!-- Modal de error -->
+    <!-- Modal de error 1-->
     <div id="modalOverlay" class="modal-overlay">
         <div class="modal">
             <span class="close-button" onclick="closeModal()">×</span>
             <p>Correo electrónico o contraseña incorrectos. Inténtalo de nuevo.</p>
         </div>
     </div>
+    <div id="modalOverlay2" class="modal-overlay">
+        <div class="modal">
+            <span class="close-button" onclick="closeModal2()">×</span>
+            <p>Usuario no encontrado.</p>
+        </div>
+    </div>
     <!-- Modal de login -->
     <div id="modalOverlayLogin" class="modal-overlay">
         <div class="modal">
             <span class="close-button" onclick="closeModalLogin()">×</span>
-            <p>INICIO EXITOSO Redirigiendo...</p>
+            <p>INICIO EXITOSO</p>
         </div>
-        
+
     </div>
     <header>
         <nav>
@@ -33,10 +39,9 @@
                 <span class="logo-text">TESSFP Ingeniería informática</span>
             </div>
             <div class="menu">
-                <a href="">Inicio</a>
-                <a href="galeria.html">Bolsa de Trabajo</a>
-                <a href="#contacto">Mesas de trabajo</a>
-                <a href="#contacto">Inicio de Sesíon</a>
+                <a href="../index.html">Inicio</a>
+                <a href="#">Bolsa de Trabajo</a>
+                <a href="#">Mesas de trabajo</a>
             </div>
             <div class="hamburger">
                 <span></span>
@@ -65,52 +70,20 @@
         <form class="login-form" method="post" action="../Control/login.php">
             <input type="text" placeholder="username" name="user" />
             <input type="password" placeholder="password" name="pass" />
-            <a href="#" >
-                <spam class="logo-text">No tienes Cuenta?</spam>
-            </a>
+            <div class="form-links">
+                <a href="alta.html" class="info-link">¿No tienes cuenta?</a>
+                <a href="#" class="info-link">¿Olvidaste tu contraseña?</a>
+            </div>
             <button type="submit" class="btn">login</button>
-            
+
         </form>
     </div>
     </main>
-    <script src="JS/index.js"></script>
-    
-    
-    
-    <script>
+    <script src="../JS/index.js"></script>
+    <script src="../JS/modales.js"></script>
 
-        // Función para cerrar el modal
-        function closeModalLogin() {
-            document.getElementById('modalOverlayLogin').style.display = 'none';
-        }
-        // Mostrar el modal si 'error=1' está en la URL obtiene la respuesta del php login
-        const urlParamsLogin = new URLSearchParams(window.location.search);
-        if (urlParamsLogin.get('success') === 'admin') {
-            document.getElementById('modalOverlayLogin').style.display = 'block';
-            setTimeout(() => {
-                window.location.href = "../ViewsAdmin/menuAdmin.html";
-            }, 3000);
-        }
-        if (urlParamsLogin.get('success') === 'user') {
-            document.getElementById('modalOverlayLogin').style.display = 'block';
-            setTimeout(() => {
-                window.location.href = "../ViewsDocente/menuDocente.html";
-            }, 3000);
-        }
-        if (urlParamsLogin.get('success') === 'academico') {
-            document.getElementById('modalOverlayLogin').style.display = 'block';
-            setTimeout(() => {
-                window.location.href = "../ViewsAcademico/menuAcademico.html";
-            }, 3000);
-        }
-        if (urlParamsLogin.get('success') === 'jefe de division') {
-            document.getElementById('modalOverlayLogin').style.display = 'block';
-            setTimeout(() => {
-                window.location.href = "../ViewsJDivision/menuJDivision.html";
-            }, 3000);
-        }
-    </script>
-    
+
+
 
 </body>
 

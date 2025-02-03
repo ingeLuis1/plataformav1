@@ -25,12 +25,12 @@ function closeModalLogin() {
 if (urlParams.get('success') === 'egresado') {
     document.getElementById('modalOverlayLogin').style.display = 'block';
     setTimeout(() => {
-        window.location.href = "../ViewsAdmin/menuAdmin.html";
+        window.location.href = "../Views/egresado.php";
     }, 3000);
 }
 if (urlParams.get('success') === 'empleador') {
     document.getElementById('modalOverlayLogin').style.display = 'block';
     setTimeout(() => {
-        window.location.href = "../ViewsDocente/menuDocente.html";
+        window.location.href = "../ViewsDocente/empleador.php";
     }, 3000);
 }

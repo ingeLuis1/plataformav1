@@ -18,7 +18,10 @@ $usuario = $sql->fetch(PDO::FETCH_ASSOC);
 ///Trabajar con los datos de la consulta
 if ($usuario) {
     $contrabd = $usuario["contra"];///obtiene la contra del usuario en laBD
+
     if (password_verify($contra, $contrabd)) {///Verifica que la contra sea igual a la de la BD
+    if (password_verify($contra, $contrabd)) {
+        ///Verifica que la contra sea igual a la de la BD
         ///Guardar datos de session
         $_SESSION["rol"] = $usuario["rol"];
         $_SESSION["id_usuario"] = $usuario["id_usuario"];
@@ -33,6 +36,13 @@ if ($usuario) {
             header("Location: ../Views/login.htlm?success=empleador");
 
         } 
+            header("Location: ../Views/login.html?success=egresado");
+
+        } else if ($usuario["rol"] == "empleador") {
+            /////Vista de administrador
+            header("Location: ../Views/login.html?success=empleador");
+
+        }
         // else if ($usuario["rol"] == "ACADEMICO") {
         //     ///Vista de Academico
         //     header("Location: ../index.html?success=academico");
@@ -45,6 +55,9 @@ if ($usuario) {
             ///Regresar al Login con los codigos de eerror para mostrar el error datos incorrectos
             header("Location:../Views/login.html?error=1");
         }
+    } else {
+        ///Regresar al Login con los codigos de eerror para mostrar el error datos incorrectos
+        header("Location:../Views/login.html?error=1");
     }
 
 } else {

@@ -1,70 +1,102 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="es">
 
 <head>
+    <link rel="icon" href="../Assets/venados.png" type="image/x-icon">
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="../static/assets/css/sis.css">
-    <title>CONAIINT</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Ruta correcta para vincular el archivo CSS -->
+    <link href="../CSS/alta.css" rel="stylesheet" />
+    <title></title>
 </head>
 
 <body>
 
-<!-- Modal de error -->
-<div id="modalOverlayError" class="modal-overlay">
-    <div class="modal">
-        <span class="close-button" onclick="closeModalError()">X</span>
-        <p>Hubo un error al registrar alumno</p>
-    </div>
-</div>
-<!-- Modal de login -->
-<div id="modalOverlayLogin" class="modal-overlay">
-    <div class="modal">
-        <span class="close-button" onclick="closeModalLogin()">×</span>
-        <p>Registro Exitoso</p>
-    </div>
-</div>
+    <header>
+        <!--  <nav>
+            <div class="logo-container">
+                <img src="../Assets/venados.png" alt="TESSFP Logo" class="logo-img">
+                <span class="logo-text">TESSFP Ingeniería informática</span>
+            </div>
+            <div class="menu">
+                <a href="">Inicio</a>
+                <a href="galeria.html">Bolsa de Trabajo</a>
+                <a href="#contacto">Mesas de trabajo</a>
+                <a href="#contacto">Inicio de Sesíon</a>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+        -->
+    </header>
+    <!--Modales de error-->
 
-<!-- Modal de error -->
-<div id="modalOverlay" class="modal-overlay">
-    <div class="modal">
-        <span class="close-button" onclick="closeModal()">X</span>
-        <p>Correo electrónico o contraseña incorrectos. Inténtalo de nuevo.</p>
-    </div>
-</div>
 
-<div class="container">
-    <div class="info">
-        <h1><em>CONAIINT</em></h1><span>Segundo Congreso Nacional de Ingeniería Informática</i>
+    <!-- Modal de error -->
+    <div id="modalOverlayError" class="modal-overlay">
+        <div class="modal">
+            <span class="close-button" onclick="closeModalError()">X</span>
+            <p>Hubo un error al registrar alumno</p>
+        </div>
+    </div>
+    <!-- Modal de login -->
+    <div id="modalOverlayLogin" class="modal-overlay">
+        <div class="modal">
+            <span class="close-button" onclick="closeModalLogin()">×</span>
+            <p>Registro Exitoso</p>
+        </div>
+    </div>
+
+    <!-- Modal de error -->
+    <div id="modalOverlay" class="modal-overlay">
+        <div class="modal">
+            <span class="close-button" onclick="closeModal()">X</span>
+            <p>Correo electrónico o contraseña incorrectos. Inténtalo de nuevo.</p>
+        </div>
+    </div>
+    <div class="container">
+        <div class="info">
+            <h1><em>Registro Grupos de Interés</em></h1><span>Academia Ingeniería Informática</i>
             </span>
+        </div>
     </div>
-</div>
-<div class="form">
-    <div class="thumbnail"><img src="../static/assets/Logo/fondo.png"/></div>
-    <form class="login-form" method="post" action="../Control/alumno.php">
-        <input type="text" placeholder="Nombre (s)" name="nombre"/>
-        <input type="text" placeholder="Apellido Paterno" name="apellidop"/>
-        <input type="text" placeholder="Apellido Materno" name="apellidom"/>
-        <input type="text" placeholder="Matricula" name="matricula"/>
-        <input type="text" placeholder="Numero Credencial" name="credencial"/>
-        <select name="grupo" id="lang">
-            <option value="II-101">II-101</option>
-            <option value="II.102">II-102</option>
-            <option value="II-103">II-103</option>
-            <option value="II-301">II-301</option>
-            <option value="II-302">II-302</option>
-            <option value="II-302">II-303</option>
-            <option value="II-501">II-501</option>
-            <option value="II-502">II-502</option>
-            <option value="II-503">II-503</option>
-            <option value="II-701">II-701</option>
-            <option value="II-702">II-702</option>
-        </select>
-        <button type="submit">Alta</button>
-    </form>
-</div>
+    <div class="form fade-in">
+        <div class="thumbnail"><img src="../Assets/venados.png" /></div>
+        <form class="login-form" method="post" action="../Control/alta.php">
+            <input type="text" placeholder="Correo electrónico" name="correo" />
+            <input type="text" placeholder="Contraseña" name="contra" />
+            <input type="text" placeholder="Nombre (s)" name="nombre" />
+            <input type="text" placeholder="Apellido Paterno" name="apellidop" />
+            <input type="text" placeholder="Apellido Materno" name="apellidom" />
+            <input type="text" placeholder="Numero Telefonico" name="num" />
+            <select name="rol" id="lang">
+                <option value="">Selecciona el tipo de usuario</option>
+                <option value="egresado">Egresado</option>
+                <option value="empleador">Empleador</option>
+            
+            </select>
+
+
+            <input type="text" placeholder="Empresa" name="empresa" />
+            <select name="cohorte" id="lang">
+                <option value="">Selecciona un Cohorte Generacional</option>
+                <option value="II.102">II-102</option>
+                <option value="II-103">II-103</option>
+                <option value="II-301">II-301</option>
+                <option value="II-302">II-302</option>
+                <option value="II-302">II-303</option>
+                <option value="II-501">II-501</option>
+                <option value="II-502">II-502</option>
+                <option value="II-503">II-503</option>
+                <option value="II-701">II-701</option>
+                <option value="II-702">II-702</option>
+            </select>
+            <button class="btn" type="submit">Alta</button>
+        </form>
+    </div>
 
 
 </body>
@@ -96,11 +128,12 @@
     if (urlParamsLogin.get('status') === 'true') {
         document.getElementById('modalOverlayLogin').style.display = 'block';
         setTimeout(() => {
-            window.location.href = "sistema.html";
+            window.location.href = "login.html";
         }, 1000);
     } else if (urlParamsLogin.get('status') === 'false') {
         document.getElementById('modalOverlayError').style.display = 'block';
     }
 </script>
+
 
 </html>

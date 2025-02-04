@@ -39,7 +39,6 @@ if (isset($_FILES['encuestaFile'])) {
             $datos = [];///arreglo para guardar los datos
 ///preparamos la consulta y creamos el cuestionario
             $pdo = conectarBD();
-            
             $fecha = date('Y-m-d');
             $sql = "INSERT INTO `cuestionarios` ( `fechaCreacion`, `tipo`) VALUES ( :fecha, :tipo)";
             $stmt = $pdo->prepare($sql);
@@ -65,12 +64,14 @@ if (isset($_FILES['encuestaFile'])) {
                 }
 
                 if (!empty(array_filter($valores))) { // Evita filas vacías
-                    $datos[] = $valores;///mandamos respuesta a la vista
+                    ///mandamos respuesta a la vista
 ///Optenemos cada parte de la fila
                     $texto = $valores[0];
                     $opcionA = $valores[1];
                     $opcionB = $valores[2];
                     $opcionC = $valores[3];
+
+                    $datos[] = ['texto' => $texto, 'opcionA' => $opcionA, 'opcionB' => $opcionB, 'opcionC' => $opcionC, 'tipo' => $tipo];
                     //Se inserta la pregunta
                     $stmt = $pdo->prepare($sql);
                     $stmt->bindParam("pregunta", $texto);
@@ -101,7 +102,8 @@ if (isset($_FILES['encuestaFile'])) {
             echo json_encode([
                 'success' => true,
                 'message' => 'Archivo procesado correctamente.',
-                'data' => $datos
+                'data' => $datos,
+                'tipo' => $tipo
             ]);
         } catch (Exception $e) {
             echo json_encode([

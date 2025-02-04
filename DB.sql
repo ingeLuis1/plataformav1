@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 03-02-2025 a las 07:03:16
+-- Tiempo de generación: 04-02-2025 a las 05:16:18
 -- Versión del servidor: 8.1.0
 -- Versión de PHP: 8.2.12
 
@@ -31,7 +31,7 @@ CREATE TABLE `cuestionarios` (
   `id_cuestionario` int NOT NULL,
   `fechaCreacion` date NOT NULL,
   `tipo` enum('atributos','objetivos') NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -48,15 +48,17 @@ CREATE TABLE `datos` (
   `id_usuario` int NOT NULL,
   `cohorte` varchar(255) NOT NULL,
   `empresa` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `datos`
 --
 
 INSERT INTO `datos` (`id_datos`, `nombre`, `apellidoP`, `apellidoM`, `telefono`, `id_usuario`, `cohorte`, `empresa`) VALUES
-(1, 'Luis Angel', 'Gonzalez', 'Flores', '3', 6, 'II-503', 'TESSFP'),
-(2, 'Luis Angel', 'Gonzalez', 'Flores', '3', 7, 'II-503', 'TESSFP');
+(4, 'Luis Angel', 'Gonzalez', 'Flores', '123', 9, 'II-503', 'TESSFP'),
+(5, 'Luis Angel', 'Gonzalez', 'Flores', '741852', 10, '2025-2020', 'Pollotec'),
+(6, 'Luis Angel', 'Gonzalez', 'Flores', '741852', 10, '2025-2020', 'Pollotec'),
+(7, 'Luis Angel', 'Gonzalez', 'Flores', '3423', 11, 'II-502', 'TESSFP');
 
 -- --------------------------------------------------------
 
@@ -69,7 +71,7 @@ CREATE TABLE `opciones` (
   `etiqueta` varchar(2) NOT NULL,
   `opcion` varchar(255) NOT NULL,
   `id_pregunta` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -81,7 +83,7 @@ CREATE TABLE `preguntas` (
   `id_pregunta` int NOT NULL,
   `pregunta` varchar(255) NOT NULL,
   `id_cuestionario` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -94,7 +96,7 @@ CREATE TABLE `respuestas` (
   `id_usuario` int NOT NULL,
   `id_pregunta` int NOT NULL,
   `id_opcion` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -105,20 +107,18 @@ CREATE TABLE `respuestas` (
 CREATE TABLE `usuarios` (
   `id_usuario` int NOT NULL,
   `email` varchar(100) NOT NULL,
-  `contra` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `contra` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `rol` enum('egresado','admin','empleador','user') NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `usuarios`
 --
 
 INSERT INTO `usuarios` (`id_usuario`, `email`, `contra`, `rol`) VALUES
-(3, 'lui1525angel@gmail.com', '$2y$10$EatbYUvFzMr23Enql1T.MeMriIdh6uvLYYL5FsdECqEBovRElQP8O', 'egresado'),
-(4, 'lui1525angel@gmail.com', '$2y$10$WE5Cxy8I3aEQ4vpztRvgq.ELckHcoVNhcr6SEe.xVLZufJgx8Vmf6', 'egresado'),
-(5, 'lui1525angel@gmail.com', '$2y$10$GWQ.zfdB1pFnW9xSPj.za.V5udVPLOW8acnK0Hk9Ha6yJxC1Onfgq', 'egresado'),
-(6, 'lui1525angel@gmail.com', '$2y$10$KGEjyz/FzHyexZ4wvfASNe9jwJ4rQUwAiboKdVeIxxHHAfviAnMPm', 'egresado'),
-(7, 'lui1525angel@gmail.com', '$2y$10$RwKDZvNNKepp8HhaabyBouGo3eNBmuxv0cjEnmJhZbq3rsyUwiWIq', 'egresado');
+(9, 'lui1525angel@gmail.com', '$2y$10$9cTuIwmFZbV6lfCC5Si4he0r6n40Zak7IstKRcQ1g8bCYGOhkusZm', 'egresado'),
+(10, 'lui1525', '$2y$10$9cTuIwmFZbV6lfCC5Si4he0r6n40Zak7IstKRcQ1g8bCYGOhkusZm', 'admin'),
+(11, 'lui', '$2y$10$B5f.8wJfVVb8uBUHx6anxOcxzSR8opZRS2SdjnjTENAVTeAQ1bwVe', 'admin');
 
 --
 -- Índices para tablas volcadas
@@ -174,25 +174,25 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `cuestionarios`
 --
 ALTER TABLE `cuestionarios`
-  MODIFY `id_cuestionario` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id_cuestionario` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT de la tabla `datos`
 --
 ALTER TABLE `datos`
-  MODIFY `id_datos` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_datos` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `opciones`
 --
 ALTER TABLE `opciones`
-  MODIFY `id_opcion` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id_opcion` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=631;
 
 --
 -- AUTO_INCREMENT de la tabla `preguntas`
 --
 ALTER TABLE `preguntas`
-  MODIFY `id_pregunta` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id_pregunta` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=213;
 
 --
 -- AUTO_INCREMENT de la tabla `respuestas`
@@ -204,7 +204,7 @@ ALTER TABLE `respuestas`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_usuario` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Restricciones para tablas volcadas

@@ -23,7 +23,7 @@
             <div class="menu">
                 <a href="../index.html">Inicio</a>
                 <a href="#">----</a>
-                <a href="#contacto">Contacto</a>
+                <a href="#">Contacto</a>
             </div>
             <div class="hamburger">
                 <span></span>
@@ -33,32 +33,37 @@
         </nav>
     </header>
     <main>
-        <h1 class="fade-in">Grupos de interés</h1>
+        <h1 class="fade-in">Adminsitrador</h1>
         <div class="gallery fade-in">
-            <div class="gallery-item" data-url="#">
-                <img src="https://placehold.co/400x300?text=Encuesta" alt="Logro 1">
+            <div class="gallery-item" data-url="#" id="encuesta">
+                <!-- Input de tipo file para cargar archivo (oculto) -->
+                <input type="file" id="fileInput" name="encuestaFile" accept=".xlsx" style="display:none;" />
+
+                <img src="https://placehold.co/400x300?text=Cargar\n Encuesta" alt="Logro 1">
                 <div class="gallery-item-overlay">
                     <div class="gallery-item-text">
                         <a href="#" class="gallery-item-text">
-                            Ae OE</a>
+                            Encuestas Objetivos</a>
+
+                    </div>
+                </div>
+            </div>
+          
+            <div class="gallery-item" data-url="#">
+                <img src="https://placehold.co/400x300?text=Ver registros" alt="Logro 2">
+                <div class="gallery-item-overlay">
+                    <div class="gallery-item-text">
+                        <a href="#" class="gallery-item-text">
+                            Registros</a>
                     </div>
                 </div>
             </div>
             <div class="gallery-item" data-url="#">
-                <img src="https://placehold.co/400x300?text=AgregarVacantetrabajo" alt="Logro 2">
+                <img src="https://placehold.co/400x300?text=Estadísticas" alt="Logro 3">
                 <div class="gallery-item-overlay">
                     <div class="gallery-item-text">
                         <a href="#" class="gallery-item-text">
-                            Vacantes</a>
-                    </div>
-                </div>
-            </div>
-            <div class="gallery-item" data-url="#">
-                <img src="https://placehold.co/400x300?text=Mesas de trabajo" alt="Logro 3">
-                <div class="gallery-item-overlay">
-                    <div class="gallery-item-text">
-                        <a href="#" class="gallery-item-text">
-                            minutas
+                            Estadísticas
                         </a>
                     </div>
                 </div>
@@ -80,51 +85,9 @@
             <img id="modalImage" src="" alt="Imagen ampliada">
         </div>
     </div>
-    <script>
-        // Menú hamburguesa
-        const hamburger = document.querySelector('.hamburger');
-        const menu = document.querySelector('.menu');
+    <script src="../JS/menuHamburguesa.js">    </script>
 
-        hamburger.addEventListener('click', () => {
-            menu.classList.toggle('active');
-            hamburger.classList.toggle('active');
-        });
-
-        // Modal de imagen
-        const modal = document.getElementById('imageModal');
-        const modalImg = document.getElementById('modalImage');
-        const closeBtn = document.getElementsByClassName('close')[0];
-
-        // Animación de fade-in para elementos con la clase 'fade-in'
-        document.addEventListener('DOMContentLoaded', () => {
-            const fadeElements = document.querySelectorAll('.fade-in');
-            fadeElements.forEach((element, index) => {
-                setTimeout(() => {
-                    element.style.opacity = '1';
-                }, index * 200);
-            });
-        });
-
-
-    </script>
-
-    <script>
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const galleryItems = document.querySelectorAll('.gallery-item');
-
-            galleryItems.forEach(item => {
-                item.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    const url = item.getAttribute('data-url');
-                    if (url) {
-                        window.location.href = url; // Redirige a la URL
-                    }
-                });
-            });
-        });
-
-    </script>
+    <script src="../JS/cargaExcel.js"> </script>
 </body>
 
 </html>

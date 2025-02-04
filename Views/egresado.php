@@ -1,6 +1,5 @@
 <?php
 include '../Control/sesiones.php';
-session_start();
 validar_acceso( ['egresado']);
 
 ?>

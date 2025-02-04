@@ -1,3 +1,9 @@
+<?php
+include '../Control/sesiones.php';
+validar_acceso(['admin'])
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -23,8 +29,8 @@
             </div>
             <div class="menu">
                 <a href="../index.html">Inicio</a>
-                <a href="#">----</a>
                 <a href="#">Contacto</a>
+                <a href="../Control/cerrarSesion.php">Cerrar Sesión</a>
             </div>
             <div class="hamburger">
                 <span></span>
@@ -58,7 +64,7 @@
         </div>
         <!-- FIN MODAL-->
 
-        <h1 class="fade-in">Adminsitrador</h1>
+        <h1 class="fade-in">Administrador</h1>
 
 
         <div class="gallery fade-in">
@@ -106,14 +112,7 @@
                     </div>
                 </div>
             </div>
-            <div class="gallery-item" data-url="#">
-                <img src="https://placehold.co/400x300?text=eNCUESTA" alt="Logro 4">
-                <div class="gallery-item-overlay">
-                    <div class="gallery-item-text">
-                        <a href="#" class="gallery-item-text">ae Y oe</a>
-                    </div>
-                </div>
-            </div>
+           
 
         </div>
     </main>

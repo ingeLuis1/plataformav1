@@ -35,6 +35,8 @@ function validar_acceso($roles_permitidos)
             header("Location:  ../Views/empleador.php");
         } else if ($user_type == 'egresado') {
             header("Location:  ../Views/egresado.php");
+        } else if ($user_type == 'admin') {
+            header("Location:  ../Views/admin.php");
         }
         exit();
     }

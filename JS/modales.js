@@ -28,9 +28,16 @@ if (urlParams.get('success') === 'egresado') {
         window.location.href = "../Views/egresado.php";
     }, 3000);
 }
-if (urlParams.get('success') === 'empleador') {
+else if (urlParams.get('success') === 'empleador') {
     document.getElementById('modalOverlayLogin').style.display = 'block';
     setTimeout(() => {
-        window.location.href = "../ViewsDocente/empleador.php";
+        window.location.href = "../Views/empleador.php";
+    }, 3000);
+}
+else if (urlParams.get('success') === 'admin') {
+    document.getElementById('modalOverlayLogin').style.display = 'block';
+    setTimeout(() => {
+        window.location.href = "../Views/admin.php";
+        console.log("admin")
     }, 3000);
 }

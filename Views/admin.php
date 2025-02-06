@@ -49,10 +49,12 @@
                     <thead>
                         <tr>
                             <th>Pregunta</th>
-                            <th>opcion a</th>
-                            <th>b</th>
-                            <th>c</th>
-                            <th>tipo</th>
+                            <th>Opcion A</th>
+                            <th>Opcion B</th>
+                            <th>Opcion C</th>
+                            <th>Opcion D</th>
+                            <th>Opcion E</th>
+                            <th>Opcion F</th>
                         </tr>
                     </thead>
                     <tbody id="preguntas">

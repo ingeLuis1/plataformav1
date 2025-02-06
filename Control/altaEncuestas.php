@@ -29,15 +29,13 @@ if (isset($_FILES['encuestaFile'])) {
 
         // Cargar el archivo Excel y subir a la BD
         try {
-
-
             $spreadsheet = IOFactory::load($file['tmp_name']);
             $worksheet = $spreadsheet->getActiveSheet();
 
             // Iterar sobre las filas, omitiendo la primera (encabezado)
             $filaInicio = 2;
             $datos = [];///arreglo para guardar los datos
-///preparamos la consulta y creamos el cuestionario
+            ///preparamos la consulta y creamos el cuestionario
             $pdo = conectarBD();
             $fecha = date('Y-m-d');
             $sql = "INSERT INTO `cuestionarios` ( `fechaCreacion`, `tipo`) VALUES ( :fecha, :tipo)";
@@ -50,56 +48,60 @@ if (isset($_FILES['encuestaFile'])) {
             $idNewEncuesta = $pdo->lastInsertId();///id del ltimo cuestionario creado se asigna a las preguntas
             //creamos nuevo sql para cada pregunta y para las opciones 
 
-
             $sql = "INSERT INTO `preguntas` ( `pregunta`, `id_cuestionario`) VALUES ( :pregunta, :idCuestionario)";
 
             $sqlOpciones = "INSERT INTO `opciones` ( `etiqueta`, `opcion`, `id_pregunta`) VALUES (:etiqueta, :opcion, :idPregunta)";
-            foreach ($worksheet->getRowIterator($filaInicio) as $row) {//recorre filas
+            foreach ($worksheet->getRowIterator($filaInicio) as $row) {
                 $cellIterator = $row->getCellIterator();
-                $cellIterator->setIterateOnlyExistingCells(false);
-
                 $valores = [];
                 foreach ($cellIterator as $cell) {
                     $valores[] = $cell->getValue();
                 }
-
+            
                 if (!empty(array_filter($valores))) { // Evita filas vacías
-                    ///mandamos respuesta a la vista
-///Optenemos cada parte de la fila
-                    $texto = $valores[0];
-                    $opcionA = $valores[1];
-                    $opcionB = $valores[2];
-                    $opcionC = $valores[3];
-                    $opcionD = $valores[4];
-
-                    $datos[] = ['texto' => $texto, 'opcionA' => $opcionA, 'opcionB' => $opcionB, 'opcionC' => $opcionC, 'opcionD' => $opcionD, 'tipo' => $tipo];
-                    //Se inserta la pregunta
+                    // Se asegura de que cada índice exista antes de acceder a él
+                    $texto = $valores[0] ?? ''; // Pregunta
+                    $opcionA = $valores[1] ?? ''; // Opción A
+                    $opcionB = $valores[2] ?? ''; // Opción B
+                    $opcionC = $valores[3] ?? ''; // Opción C
+                    $opcionD = $valores[4] ?? ''; // Opción D
+                    $opcionE = $valores[5] ?? ''; // Opción E
+                    $opcionF = $valores[6] ?? ''; // Opción F
+            
+                    $datos[] = [
+                        'texto' => $texto,
+                        'opcionA' => $opcionA,
+                        'opcionB' => $opcionB,
+                        'opcionC' => $opcionC,
+                        'opcionD' => $opcionD,
+                        'opcionE' => $opcionE,
+                        'opcionF' => $opcionF,
+                        'tipo' => $tipo
+                    ];
+            
+                    // Insertar la pregunta
                     $stmt = $pdo->prepare($sql);
                     $stmt->bindParam("pregunta", $texto);
                     $stmt->bindParam("idCuestionario", $idNewEncuesta);
                     $stmt->execute();
-
+            
                     $idPregunta = $pdo->lastInsertId();
-
-                    ////insertamos las opciones
-//se asocia en un arreglo las opciones
-
-                    //prepara sqlopciones
+            
+                    // Insertar opciones válidas
                     $stmt = $pdo->prepare($sqlOpciones);
-                    $opciones = ['A' => $opcionA, 'B' => $opcionB, 'C' => $opcionC, 'D' => $opcionD];
-
+                    $opciones = ['A' => $opcionA, 'B' => $opcionB, 'C' => $opcionC, 'D' => $opcionD, 'E' => $opcionE, 'F' => $opcionF];
+            
                     foreach ($opciones as $etiqueta => $opcion) {
-
-                        ///se agregan los parametros al pdo
-                        $stmt->bindParam("etiqueta", $etiqueta);
-                        $stmt->bindParam("opcion", $opcion);
-                        $stmt->bindParam("idPregunta", $idPregunta);
-                        $stmt->execute();
+                        if (!empty($opcion)) { // Evita insertar opciones vacías
+                            $stmt->bindParam("etiqueta", $etiqueta);
+                            $stmt->bindParam("opcion", $opcion);
+                            $stmt->bindParam("idPregunta", $idPregunta);
+                            $stmt->execute();
+                        }
                     }
-
-
                 }
             }
+            
 
             echo json_encode([
                 'success' => true,

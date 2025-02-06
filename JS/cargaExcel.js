@@ -34,13 +34,11 @@ async function uploadFile(file, tipo) {
     const formData = new FormData();
     formData.append("encuestaFile", file);
     formData.append("tipo", tipo);//indica el tipo de encuesta que se sube
-
     try {
         const response = await fetch('../Control/altaEncuestas.php', {
             method: 'POST',
             body: formData
         });
-
         const result = await response.json(); // Se espera que el servidor devuelva un JSON
         if (result.success) {
             alert('¡Archivo cargado exitosamente!');
@@ -48,8 +46,6 @@ async function uploadFile(file, tipo) {
             document.getElementById('myModal').style.display = 'flex';
             renderTable(result.data);
             ///Renderisar el modal para mostrar datos cargados
-
-
         } else {
             alert('Hubo un error al cargar el archivo.');
         }
@@ -65,20 +61,23 @@ async function uploadFile(file, tipo) {
 function renderTable(data) {
     const tableBody = document.getElementById('preguntas');
     tableBody.innerHTML = '';
-
     data.forEach(pregunta => {
         const row = document.createElement('tr');
-        row.innerHTML =
-            `
-                <td>${pregunta.texto}</td>
-                <td>${pregunta.opcionA}</td>
-                <td>${pregunta.opcionB}</td>
-                <td>${pregunta.opcionC}</td>
-                <td>${pregunta.tipo}</td>
-                
-            `;
+        let opcionesHTML = ''; // Contendrá solo las opciones no vacías
+        ['opcionA', 'opcionB', 'opcionC', 'opcionD', 'opcionE', 'opcionF'].forEach(opcion => {
+            if (pregunta[opcion]) { // Verifica si la opción no es null ni vacía
+                opcionesHTML += `<td>${pregunta[opcion]}</td>`;
+            } else {
+                opcionesHTML += `<td></td>`; // Celda vacía para mantener el formato
+            }
+        });
+        row.innerHTML = `
+            <td>${pregunta.texto}</td>
+            ${opcionesHTML}
+        `;
         tableBody.prepend(row);
     });
+
 
 }
 

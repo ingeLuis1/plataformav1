@@ -54,7 +54,7 @@ $nombre = $user['nombre'] . " " . $user['apellidoP'] . " " . $user['apellidoM'];
         <h3 class="padding-bottom: 20px">nombre: <?php echo ($nombre) ?></h3>
         <div>
         <div class="gallery fade-in">
-            <div class="gallery-item" data-url="encuesta.php">
+            <div class="gallery-item" data-url="encuestaE.php">
                 <img src="https://placehold.co/400x300?text=Encuestas" alt="Logro 1">
                 <div class="gallery-item-overlay">
                     <div class="gallery-item-text">

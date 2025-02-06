@@ -1,6 +1,5 @@
 <?php
 include '../Control/sesiones.php';
-session_start();
 validar_acceso(['empleador']);
 ?>
 
@@ -28,7 +27,7 @@ validar_acceso(['empleador']);
             </div>
             <div class="menu">
                 <a href="../index.html">Inicio</a>
-                <a href="#">----</a>
+                <a href="../Control/cerrarSesion.php">Cerrar Sesión</a>
                 <a href="#contacto">Contacto</a>
             </div>
             <div class="hamburger">
@@ -41,7 +40,7 @@ validar_acceso(['empleador']);
     <main>
         <h1 class="fade-in">Grupos de interés</h1>
         <div class="gallery fade-in">
-            <div class="gallery-item" data-url="#">
+            <div class="gallery-item" data-url="encuestaE.php">
                 <img src="https://placehold.co/400x300?text=Encuesta" alt="Logro 1">
                 <div class="gallery-item-overlay">
                     <div class="gallery-item-text">
@@ -80,12 +79,7 @@ validar_acceso(['empleador']);
 
         </div>
     </main>
-    <div id="imageModal" class="modal">
-        <span class="close">&times;</span>
-        <div class="modal-content">
-            <img id="modalImage" src="" alt="Imagen ampliada">
-        </div>
-    </div>
+  
     <script>
         // Menú hamburguesa
         const hamburger = document.querySelector('.hamburger');

@@ -42,7 +42,6 @@ async function uploadFile(file, tipo) {
         const result = await response.json(); // Se espera que el servidor devuelva un JSON
         if (result.success) {
             alert('¡Archivo cargado exitosamente!');
-            console.log(result.data)
             document.getElementById('myModal').style.display = 'flex';
             renderTable(result.data);
             ///Renderisar el modal para mostrar datos cargados

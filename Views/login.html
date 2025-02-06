@@ -11,6 +11,29 @@
 </head>
 
 <body>
+<<<<<<< HEAD
+=======
+    <!-- Modal de error 1-->
+    <div id="modalOverlay" class="modal-overlay">
+        <div class="modal">
+            <span class="close-button" onclick="closeModal()">×</span>
+            <p>Correo electrónico o contraseña incorrectos. Inténtalo de nuevo.</p>
+        </div>
+    </div>
+    <div id="modalOverlay2" class="modal-overlay">
+        <div class="modal">
+            <span class="close-button" onclick="closeModal2()">×</span>
+            <p>Usuario no encontrado.</p>
+        </div>
+    </div>
+    <!-- Modal de login -->
+    <div id="modalOverlayLogin" class="modal-overlay">
+        <div class="modal">
+            <span class="close-button" onclick="closeModalLogin()">×</span>
+            <p>INICIO EXITOSO</p>
+        </div>
+    </div>
+>>>>>>> origin/main
     <header>
         <nav>
             <div class="logo-container">
@@ -18,10 +41,16 @@
                 <span class="logo-text">TESSFP Ingeniería informática</span>
             </div>
             <div class="menu">
+<<<<<<< HEAD
                 <a href="">Inicio</a>
                 <a href="galeria.html">Bolsa de Trabajo</a>
                 <a href="#contacto">Mesas de trabajo</a>
                 <a href="#contacto">Inicio de Sesíon</a>
+=======
+                <a href="../index.html">Inicio</a>
+                <a href="#">Bolsa de Trabajo</a>
+                <a href="#">Mesas de trabajo</a>
+>>>>>>> origin/main
             </div>
             <div class="hamburger">
                 <span></span>
@@ -50,6 +79,7 @@
         <form class="login-form" method="post" action="../Control/login.php">
             <input type="text" placeholder="username" name="user" />
             <input type="password" placeholder="password" name="pass" />
+<<<<<<< HEAD
             <a href="#" >
                 <spam class="logo-text">No tienes Cuenta?</spam>
             </a>
@@ -64,6 +94,21 @@
         function closeModal() {
             document.getElementById('modalOverlay').style.display = 'none';
         }
+=======
+            <div class="form-links">
+                <a href="alta.html" class="info-link">¿No tienes cuenta?</a>
+                <a href="#" class="info-link">¿Olvidaste tu contraseña?</a>
+            </div>
+            <button type="submit" class="btn">login</button>
+
+        </form>
+    </div>
+    </main>
+    <script src="../JS/index.js"></script>
+    <script src="../JS/modales.js"></script>
+
+
+>>>>>>> origin/main
 
         // Mostrar el modal si 'error=1' está en la URL
         const urlParams = new URLSearchParams(window.location.search);

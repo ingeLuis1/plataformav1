@@ -10,7 +10,6 @@ if (!isset($_SESSION['rol'])) {
 
 // Obtiene el tipo de usuario desde la sesión
 $user_type = $_SESSION['rol'];
-
 // Función para validar si el usuario tiene acceso basado en su rol
 function validar_acceso($roles_permitidos)
 {

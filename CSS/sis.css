@@ -20,24 +20,6 @@ body {
     background-color: var(--light-gray);
 }
 
-.form-links {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 1rem;
-}
-
-.info-link {
-    color: var(--dark-green);
-    text-decoration: none;
-    font-size: 0.9rem;
-    transition: color 0.3s ease;
-}
-
-.info-link:hover {
-    color: #0056b3;
-    text-decoration: underline;
-}
-
 header {
     background-color: var(--dark-green);
     color: var(--white);
@@ -212,37 +194,36 @@ h1 {
 
 
 }
-
 /* Estilo para el fondo del modal */
 .modal-overlay {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1000;
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+	z-index: 1000;
 }
 
 /* Estilo del modal */
 .modal {
-    background-color: white;
-    padding: 20px;
-    width: 300px;
-    margin: 100px auto;
-    border-radius: 8px;
-    text-align: center;
-    position: relative;
+	background-color: white;
+	padding: 20px;
+	width: 300px;
+	margin: 100px auto;
+	border-radius: 8px;
+	text-align: center;
+	position: relative;
 }
 
 /* Botón de cerrar */
 .close-button {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
-    font-size: 18px;
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	cursor: pointer;
+	font-size: 18px;
 }
 
 
@@ -256,9 +237,7 @@ h1 {
     }
 }
 
-.form input,
-select,
-option {
+.form input, select,option{
     outline: 0;
     background: #f2f2f2;
     width: 100%;

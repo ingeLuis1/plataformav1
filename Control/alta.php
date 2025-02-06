@@ -1,5 +1,6 @@
 <?php
-include 'dbConection.php';
+include 'conexionBD.php';
+
 $nombre = $_POST["nombre"];
 $apellidop = $_POST["apellidop"];
 $apellidom = $_POST["apellidom"];

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <link rel="icon" href="../Assets/venados.png" type="image/x-icon">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Ruta correcta para vincular el archivo CSS -->
+  <link href="../CSS/sis.css" rel="stylesheet" />
+  <title></title>
+</head>
+
+<div class="form fade-in">
+  <div class="thumbnail"><img src="../Assets/venados.png" /></div>
+<h2>Crear Cuestionario</h2>
+
+<form class="login-form" action="../Control/guardar_cuestionario.php" method="POST">
+  <label for="id_cuestionario">ID Cuestionario:</label>
+  <input type="number" name="id_cuestionario" required>
+
+  <label for="fechaCreacion">Fecha de Creación:</label>
+  <input type="date" name="fechaCreacion" required>
+
+  <label for="tipo">Tipo:</label>
+  <select name="tipo" required>
+    <option value="atributos">Atributos</option>
+    <option value="objetivos">Objetivos</option>
+  </select>
+
+  <button type="submit">Guardar</button>
+</form>
+</div>
+
+</body>
+</html>

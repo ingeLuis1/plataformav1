@@ -2,7 +2,7 @@
 //CONEXION A BD
 //Datos de conexion a Mysql
 $host = "localhost";
-$db = "encuestas";
+$db = "academia";
 $user = "root";
 $pass = "";
 $cdb = "mysql:host=$host;dbname=$db;charset=utf8mb4";///Conexion

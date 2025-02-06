@@ -66,33 +66,35 @@
     <div class="form fade-in">
         <div class="thumbnail"><img src="../Assets/venados.png" /></div>
         <form class="login-form" method="post" action="../Control/alta.php">
+
             <input type="text" placeholder="Correo electrónico" name="correo" />
             <input type="text" placeholder="Contraseña" name="contra" />
             <input type="text" placeholder="Nombre (s)" name="nombre" />
             <input type="text" placeholder="Apellido Paterno" name="apellidop" />
             <input type="text" placeholder="Apellido Materno" name="apellidom" />
             <input type="text" placeholder="Numero Telefonico" name="num" />
-            <select name="rol" id="lang">
+
+            <select name="rol" id="rol" onchange="mostrarCampos()">
                 <option value="">Selecciona el tipo de usuario</option>
                 <option value="egresado">Egresado</option>
                 <option value="empleador">Empleador</option>
-            
             </select>
 
 
-            <input type="text" placeholder="Empresa" name="empresa" />
-            <select name="cohorte" id="lang">
+            <input type="text" placeholder="Empresa" name="empresa" hidden id="empresa" />
+            <select name="cohorte" hidden id="cohorte">
                 <option value="">Selecciona un Cohorte Generacional</option>
-                <option value="II.102">II-102</option>
-                <option value="II-103">II-103</option>
-                <option value="II-301">II-301</option>
-                <option value="II-302">II-302</option>
-                <option value="II-302">II-303</option>
-                <option value="II-501">II-501</option>
-                <option value="II-502">II-502</option>
-                <option value="II-503">II-503</option>
-                <option value="II-701">II-701</option>
-                <option value="II-702">II-702</option>
+                <option value="2010-2014">2010-2014</option>
+                <option value="2011-2015">2011-2015</option>
+                <option value="2012-2016">2012-2016</option>
+                <option value="2013-2017">2013-2017</option>
+                <option value="2014-2018">2014-2018</option>
+                <option value="2015-2019">2015-2019</option>
+                <option value="2016-2020">2016-2020</option>
+                <option value="2017-2021">2017-2021</option>
+                <option value="2018-2022">2018-2022</option>
+                <option value="2019-2023">2019-2023</option>
+                <option value="2020-2024">2020-2024</option>
             </select>
             <button class="btn" type="submit">Alta</button>
         </form>
@@ -101,19 +103,29 @@
 
 </body>
 <script>
+    /// funcion para ocultar o mostrar datos acorde a empresa o agresado
+    function mostrarCampos() {
+        const rol = document.getElementById('rol').value;
+        const cohorte = document.getElementById('cohorte');
+        const empresa = document.getElementById('empresa');
+        cohorte.hidden = true;
+        empresa.hidden = true;
+        if (rol === "egresado") {
+            cohorte.hidden = false;
+        } else if (rol === "empleador") {
+            empresa.hidden = false;
+        }
+    }
     // Función para cerrar el modal
     function closeModal() {
         document.getElementById('modalOverlay').style.display = 'none';
     }
-
     // Mostrar el modal si 'error=1' está en la URL
     const urlParams = new URLSearchParams(window.location.search);
     if (urlParams.get('error') === '1') {
         document.getElementById('modalOverlay').style.display = 'block';
     }
-</script>
 
-<script>
     // Función para cerrar el modal
     function closeModalError() {
         document.getElementById('modalOverlayError').style.display = 'none';

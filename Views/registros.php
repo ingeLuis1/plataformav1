@@ -1,3 +1,15 @@
+<?php
+
+//include '../Control/sesiones.php';
+//validar_acceso(['admin']);
+include '../Control/constancias.php';
+$pdo=conectarBD();
+
+
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -30,6 +42,7 @@
             <span class="close-button" onclick="closeModalLogin()">×</span>
             <p>INICIO EXITOSO</p>
         </div>
+
     </div>
     <header>
         <nav>
@@ -65,17 +78,17 @@
         </div>
     </div>
     <div class="form fade-in">
-        <div class="thumbnail"><img src="../Assets/venados.png" /></div>
-        <form class="login-form" method="post" action="../Control/login.php">
-            <input type="text" placeholder="username" name="user" />
-            <input type="password" placeholder="password" name="pass" />
-            <div class="form-links">
-                <a href="alta.html" class="info-link">¿No tienes cuenta?</a>
-                <a href="#" class="info-link">¿Olvidaste tu contraseña?</a>
-            </div>
-            <button type="submit" class="btn">login</button>
 
-        </form>
+        <table class="styled-table">
+            <thead>
+                <tr>Fecha</tr>
+                <tr>Tipo</tr>
+                <tr>Descripcion</tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
     </div>
     </main>
     <script src="../JS/index.js"></script>

@@ -1,6 +1,5 @@
 <?php
-include '../Control/sesiones.php';
-validar_acceso(['admin'])
+
 
 ?>
 
@@ -93,7 +92,7 @@ validar_acceso(['admin'])
                 </div>
             </div>
 
-            <div class="gallery-item" data-url="#">
+            <div class="gallery-item" data-url="registros.php">
                 <img src="https://placehold.co/400x300?text=Ver registros" alt="Logro 2">
                 <div class="gallery-item-overlay">
                     <div class="gallery-item-text">

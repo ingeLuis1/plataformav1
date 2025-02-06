@@ -1,10 +1,18 @@
 <?php
-include '../Control/sesiones.php';
-validar_acceso( ['egresado']);
+require_once  '../Control/sesiones.php';
+validar_acceso(['egresado']);
+require_once  '../Control/conexionBD.php';
+$pdo = conectarBD();
+$sql = "SELECT * FROM `datos` WHERE id_usuario=:id";
+$id = $_SESSION['id_usuario'];
+$stmt = $pdo->prepare($sql);
+$stmt->bindParam("id", $id);
+$stmt->execute();
+$user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+$nombre = $user['nombre'] . " " . $user['apellidoP'] . " " . $user['apellidoM'];
 
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="es">
@@ -43,9 +51,11 @@ validar_acceso( ['egresado']);
     </header>
     <main>
         <h1 class="fade-in">Egresados</h1>
+        <h3 class="padding-bottom: 20px">nombre: <?php echo ($nombre) ?></h3>
+        <div>
         <div class="gallery fade-in">
-            <div class="gallery-item" data-url="#">
-                <img src="https://placehold.co/400x300?text=Encuesta" alt="Logro 1">
+            <div class="gallery-item" data-url="encuesta.php">
+                <img src="https://placehold.co/400x300?text=Encuestas" alt="Logro 1">
                 <div class="gallery-item-overlay">
                     <div class="gallery-item-text">
                         <a href="#" class="gallery-item-text">
@@ -83,12 +93,6 @@ validar_acceso( ['egresado']);
 
         </div>
     </main>
-    <div id="imageModal" class="modal">
-        <span class="close">&times;</span>
-        <div class="modal-content">
-            <img id="modalImage" src="" alt="Imagen ampliada">
-        </div>
-    </div>
     <script>
         // Menú hamburguesa
         const hamburger = document.querySelector('.hamburger');
@@ -98,7 +102,6 @@ validar_acceso( ['egresado']);
             menu.classList.toggle('active');
             hamburger.classList.toggle('active');
         });
-
         // Modal de imagen
         const modal = document.getElementById('imageModal');
         const modalImg = document.getElementById('modalImage');

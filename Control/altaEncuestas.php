@@ -70,8 +70,9 @@ if (isset($_FILES['encuestaFile'])) {
                     $opcionA = $valores[1];
                     $opcionB = $valores[2];
                     $opcionC = $valores[3];
+                    $opcionD = $valores[4];
 
-                    $datos[] = ['texto' => $texto, 'opcionA' => $opcionA, 'opcionB' => $opcionB, 'opcionC' => $opcionC, 'tipo' => $tipo];
+                    $datos[] = ['texto' => $texto, 'opcionA' => $opcionA, 'opcionB' => $opcionB, 'opcionC' => $opcionC, 'opcionD' => $opcionD, 'tipo' => $tipo];
                     //Se inserta la pregunta
                     $stmt = $pdo->prepare($sql);
                     $stmt->bindParam("pregunta", $texto);
@@ -85,9 +86,10 @@ if (isset($_FILES['encuestaFile'])) {
 
                     //prepara sqlopciones
                     $stmt = $pdo->prepare($sqlOpciones);
-                    $opciones = ['A' => $opcionA, 'B' => $opcionB, 'C' => $opcionC];
+                    $opciones = ['A' => $opcionA, 'B' => $opcionB, 'C' => $opcionC, 'D' => $opcionD];
 
                     foreach ($opciones as $etiqueta => $opcion) {
+
                         ///se agregan los parametros al pdo
                         $stmt->bindParam("etiqueta", $etiqueta);
                         $stmt->bindParam("opcion", $opcion);

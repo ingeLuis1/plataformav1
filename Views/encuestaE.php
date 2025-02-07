@@ -53,7 +53,13 @@ validar_acceso(['egresado', 'empleador']);
     fetch('../Control/encuesta.php')
         .then(response => response.json())
         .then(data => {
-            console.log(data);
+            /// ya realizao la encueta
+            console.log(data);  
+
+            if (data.success && data.message === 'listo') {
+                alert("Encuesta contestada");
+                window.history.back();
+            }
             ///renderizar form para mostrar las preguntas del back
             const formBody = document.getElementById('form-encuesta');
             data.forEach(pregunta => {
@@ -93,6 +99,7 @@ validar_acceso(['egresado', 'empleador']);
             formBody.appendChild(button); // Añades el botón al formulario
 
 
+
         })
         .catch(error => console.error('Error:', error));
 
@@ -116,13 +123,13 @@ validar_acceso(['egresado', 'empleador']);
             }
 
             const idPregunta = fieldset.querySelector('input[type="hidden"]').value;
-
             respuestas.push({
                 id_usuario: idUsuario,
                 id_pregunta: idPregunta,
                 id_opcion: opcionSeleccionada.value
             });
         });
+        console.log(respuestas);
 
         if (!todasRespondidas) {
             alert("Por favor, responde todas las preguntas antes de enviar.");

@@ -5,28 +5,51 @@ session_start();
 ///regresa info en json
 header("content-type:application/json");
 $pdo = conectarBD();
-$sql = "SELECT    u.rol,    d.cohorte,d.id_usuario,    d.empresa FROM usuarios u INNER JOIN datos d ON u.id_usuario = :id";
 $id = $_SESSION['id_usuario'];
 
-$stmt = $pdo->prepare($sql);
-$stmt->bindParam("id", $id);
-$stmt->execute();
-$user = $stmt->fetch(PDO::FETCH_ASSOC);
-///Verificar si tiene mas de 5 años de egresado para aplicar ambos cuestionarios de lo contrario aplicar el de AE unicamente
-$AnioActual = date("Y");
-$cohorte = explode("-", $user["cohorte"]);
-$cohorte = $cohorte[0];
-$aniosCohorte = intval(trim($cohorte));
-$rol = $_SESSION["rol"];
+////Buscar si ya tiene un examen resuelto
 
-if ($rol == 'empleador') {
-    obtenerEncuestaOE($pdo);
-} else if (($AnioActual - $aniosCohorte) > 5 && $rol == 'egresado') {
-    obtenerEncuestaOEyAE(pdo: $pdo);
+$sql = "SELECT * FROM `controlrespuestas` WHERE id_usuario=:id";
+
+$stmt = $pdo->prepare($sql);
+$stmt->bindParam(":id", $id);
+$stmt->execute();
+
+if ($stmt->rowCount() > 0) {
+
+    ///sii hay registro no hace encuesta
+    echo json_encode([
+        'success' => true,
+        'message' => 'listo'
+    ]);
+    exit;
+
 
 } else {
-    obtenerEncuestaAE($pdo);
+    //no hay egistro hace encuesta
+    $sql = "SELECT    u.rol,    d.cohorte,d.id_usuario,    d.empresa FROM usuarios u INNER JOIN datos d ON u.id_usuario = :id";
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam("id", $id);
+    $stmt->execute();
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+    ///Verificar si tiene mas de 5 años de egresado para aplicar ambos cuestionarios de lo contrario aplicar el de AE unicamente
+    $AnioActual = date("Y");
+    $cohorte = explode("-", $user["cohorte"]);
+    $cohorte = $cohorte[0];
+    $aniosCohorte = intval(trim($cohorte));
+    $rol = $_SESSION["rol"];
+
+    if ($rol == 'empleador') {
+        obtenerEncuestaOE($pdo);
+    } else if (($AnioActual - $aniosCohorte) > 5 && $rol == 'egresado') {
+        obtenerEncuestaOEyAE(pdo: $pdo);
+
+    } else {
+        obtenerEncuestaAE($pdo);
+    }
+
 }
+
 
 
 function obtenerEncuestaAE($pdo)
@@ -63,6 +86,7 @@ function obtenerEncuestaAE($pdo)
         ];
 
     }
+
     echo json_encode(array_values($preguntas), JSON_PRETTY_PRINT);
 }
 

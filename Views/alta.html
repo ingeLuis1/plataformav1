@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <link rel="icon" href="../Assets/venados.png" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Ruta correcta para vincular el archivo CSS -->
+    <link href="../CSS/alta.css" rel="stylesheet" />
+    <title></title>
+</head>
+
+<body>
+
+    <header>
+        <!--  <nav>
+            <div class="logo-container">
+                <img src="../Assets/venados.png" alt="TESSFP Logo" class="logo-img">
+                <span class="logo-text">TESSFP Ingeniería informática</span>
+            </div>
+            <div class="menu">
+                <a href="">Inicio</a>
+                <a href="galeria.html">Bolsa de Trabajo</a>
+                <a href="#contacto">Mesas de trabajo</a>
+                <a href="#contacto">Inicio de Sesíon</a>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+        -->
+    </header>
+    <!--Modales de error-->
+
+
+    <!-- Modal de error -->
+    <div id="modalOverlayError" class="modal-overlay">
+        <div class="modal">
+            <span class="close-button" onclick="closeModalError()">X</span>
+            <p>Hubo un error al registrar alumno</p>
+        </div>
+    </div>
+    <!-- Modal de login -->
+    <div id="modalOverlayLogin" class="modal-overlay">
+        <div class="modal">
+            <span class="close-button" onclick="closeModalLogin()">×</span>
+            <p>Registro Exitoso</p>
+        </div>
+    </div>
+
+    <!-- Modal de error -->
+    <div id="modalOverlay" class="modal-overlay">
+        <div class="modal">
+            <span class="close-button" onclick="closeModal()">X</span>
+            <p>Correo electrónico o contraseña incorrectos. Inténtalo de nuevo.</p>
+        </div>
+    </div>
+    <div class="container">
+        <div class="info">
+            <h1><em>Registro Grupos de Interés</em></h1><span>Academia Ingeniería Informática</i>
+            </span>
+        </div>
+    </div>
+    <div class="form fade-in">
+        <div class="thumbnail"><img src="../Assets/venados.png" /></div>
+        <form class="login-form" method="post" action="../Control/alta.php">
+
+            <input type="text" placeholder="Correo electrónico" name="correo" />
+            <input type="text" placeholder="Contraseña" name="contra" />
+            <input type="text" placeholder="Nombre (s)" name="nombre" />
+            <input type="text" placeholder="Apellido Paterno" name="apellidop" />
+            <input type="text" placeholder="Apellido Materno" name="apellidom" />
+            <input type="text" placeholder="Numero Telefonico" name="num" />
+
+            <select name="rol" id="rol" onchange="mostrarCampos()">
+                <option value="">Selecciona el tipo de usuario</option>
+                <option value="egresado">Egresado</option>
+                <option value="empleador">Empleador</option>
+            </select>
+
+
+            <input type="text" placeholder="Empresa" name="empresa" hidden id="empresa" />
+            <select name="cohorte" hidden id="cohorte">
+                <option value="">Selecciona un Cohorte Generacional</option>
+                <option value="2010-2014">2010-2014</option>
+                <option value="2011-2015">2011-2015</option>
+                <option value="2012-2016">2012-2016</option>
+                <option value="2013-2017">2013-2017</option>
+                <option value="2014-2018">2014-2018</option>
+                <option value="2015-2019">2015-2019</option>
+                <option value="2016-2020">2016-2020</option>
+                <option value="2017-2021">2017-2021</option>
+                <option value="2018-2022">2018-2022</option>
+                <option value="2019-2023">2019-2023</option>
+                <option value="2020-2024">2020-2024</option>
+            </select>
+            <button class="btn" type="submit">Alta</button>
+        </form>
+    </div>
+
+
+</body>
+<script>
+    /// funcion para ocultar o mostrar datos acorde a empresa o agresado
+    function mostrarCampos() {
+        const rol = document.getElementById('rol').value;
+        const cohorte = document.getElementById('cohorte');
+        const empresa = document.getElementById('empresa');
+        cohorte.hidden = true;
+        empresa.hidden = true;
+        if (rol === "egresado") {
+            cohorte.hidden = false;
+        } else if (rol === "empleador") {
+            empresa.hidden = false;
+        }
+    }
+    // Función para cerrar el modal
+    function closeModal() {
+        document.getElementById('modalOverlay').style.display = 'none';
+    }
+    // Mostrar el modal si 'error=1' está en la URL
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('error') === '1') {
+        document.getElementById('modalOverlay').style.display = 'block';
+    }
+
+    // Función para cerrar el modal
+    function closeModalError() {
+        document.getElementById('modalOverlayError').style.display = 'none';
+    }
+
+    function closeModalLogin() {
+        document.getElementById('modalOverlayLogin').style.display = 'none';
+    }
+
+    // Mostrar el modal si 'error=1' está en la URL
+    const urlParamsLogin = new URLSearchParams(window.location.search);
+    if (urlParamsLogin.get('status') === 'true') {
+        document.getElementById('modalOverlayLogin').style.display = 'block';
+        setTimeout(() => {
+            window.location.href = "login.html";
+        }, 1000);
+    } else if (urlParamsLogin.get('status') === 'false') {
+        document.getElementById('modalOverlayError').style.display = 'block';
+    }
+</script>
+
+
+</html>

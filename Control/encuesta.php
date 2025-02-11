@@ -29,7 +29,8 @@ if ($stmt->rowCount() > 0) {
 } else {
     //no hay egistro hace encuesta
 
-    $sql = "SELECT    u.rol,    d.cohorte,d.id_usuario,    d.empresa FROM usuarios u INNER JOIN datos d ON u.id_usuario = :id";
+    $sql = "SELECT    u.rol,    d.cohorte,d.id_usuario,    d.empresa FROM usuarios u 
+    INNER JOIN datos d ON u.id_usuario = :id where d.id_usuario=:id";
 
     $stmt = $pdo->prepare($sql);
     $stmt->bindParam("id", $id);

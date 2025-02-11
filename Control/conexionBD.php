@@ -2,10 +2,10 @@
 //CONEXION A BD
 //Datos de conexion a Mysql
 $host = "localhost";
-$db = "academia";
-$user = "root";
+$db = "u386652371_academia";
+$user = "u386652371_root";
 
-$pass = "sasa";
+$pass = "123academiaII";
 
 $cdb = "mysql:host=$host;dbname=$db;charset=utf8mb4";///Conexion
 ///Crear PDO accesso a base de datos, seguro

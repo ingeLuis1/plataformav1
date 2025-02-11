@@ -1,5 +1,5 @@
 <?php
-include '../Control/sesiones.php';
+require_once '../Control/sesiones.php';
 validar_acceso(['egresado', 'empleador']);
 
 
@@ -17,14 +17,18 @@ validar_acceso(['egresado', 'empleador']);
 </head>
 
 <body>
-    <header>
-        <nav>
-            <label hidden id="id"><?php echo ($_SESSION['id_usuario']) ?></label>
-            <div class="logo-container">
+   <header>
+       <label hidden id="id"><?php echo ($_SESSION['id_usuario']) ?></label>
 
+        <nav>
+            <div class="logo-container">
+                <img src="../Assets/venados.png" alt="TESSFP Logo" class="logo-img">
+                <span class="logo-text">TESSFP Ingeniería informática</span>
             </div>
             <div class="menu">
-
+                <a href="../index.html">Inicio</a>
+                <a href="#">Bolsa de Trabajo</a>
+                <a href="#">Mesas de trabajo</a>
             </div>
             <div class="hamburger">
                 <span></span>

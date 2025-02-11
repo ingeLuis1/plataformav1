@@ -2,9 +2,8 @@
 
 //include '../Control/sesiones.php';
 //validar_acceso(['admin']);
-include '../Control/constancias.php';
+include '../Control/conexionBD.php';
 $pdo=conectarBD();
-
 
 
 

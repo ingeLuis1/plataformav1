@@ -38,7 +38,6 @@ $nombre = $user['nombre'] . " " . $user['apellidoP'] . " " . $user['apellidoM'];
             </div>
             <div class="menu">
                 <a href="../index.html">Inicio</a>
-                <a href="#">----</a>
                 <a href="#contacto">Contacto</a>
                 <a href="../Control/cerrarSesion.php">Cerrar Sesión</a>
             </div>
@@ -82,14 +81,7 @@ $nombre = $user['nombre'] . " " . $user['apellidoP'] . " " . $user['apellidoM'];
                     </div>
                 </div>
             </div>
-            <div class="gallery-item" data-url="#">
-                <img src="https://placehold.co/400x300?text=eNCUESTA" alt="Logro 4">
-                <div class="gallery-item-overlay">
-                    <div class="gallery-item-text">
-                        <a href="#" class="gallery-item-text">ae Y oe</a>
-                    </div>
-                </div>
-            </div>
+            
 
         </div>
     </main>

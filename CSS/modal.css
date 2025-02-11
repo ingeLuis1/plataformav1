@@ -1,3 +1,11 @@
+:root {
+    --lime-green: #7B1E25;
+    --dark-green: #4A0E14;
+    --light-gray: #d3d3d3;
+    --dark-gray: #333333;
+    --white: #D4AF37;
+}
+
 .styled-table {
     width: 100%;
     border-collapse: collapse;

@@ -1,10 +1,11 @@
 :root {
-    --lime-green: #c8ff00;
-    --dark-green: #2c5e1a;
+    --lime-green: #7B1E25;
+    --dark-green: #4A0E14;
     --light-gray: #d3d3d3;
     --dark-gray: #333333;
-    --white: #ffffff;
+    --white: #D4AF37;
 }
+
 
 * {
     margin: 0;
@@ -55,7 +56,7 @@ nav {
 .logo-text {
     font-size: 1.5rem;
     font-weight: bold;
-    color: var(--lime-green);
+    color: var(--white  );
 }
 
 .menu {
@@ -133,7 +134,7 @@ h1 {
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: rgba(44, 94, 26, 0.8);
+    background-color: var(--dark-green);
     overflow: hidden;
     width: 100%;
     height: 0;

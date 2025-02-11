@@ -13,16 +13,14 @@
 <body>
 
     <header>
-        <!--  <nav>
+          <nav>
             <div class="logo-container">
                 <img src="../Assets/venados.png" alt="TESSFP Logo" class="logo-img">
                 <span class="logo-text">TESSFP Ingeniería informática</span>
             </div>
             <div class="menu">
                 <a href="">Inicio</a>
-                <a href="galeria.html">Bolsa de Trabajo</a>
-                <a href="#contacto">Mesas de trabajo</a>
-                <a href="#contacto">Inicio de Sesíon</a>
+                <a href="../Views/login.html">Inicio de Sesíon</a>
             </div>
             <div class="hamburger">
                 <span></span>
@@ -30,7 +28,7 @@
                 <span></span>
             </div>
         </nav>
-        -->
+    
     </header>
     <!--Modales de error-->
 
@@ -67,14 +65,14 @@
         <div class="thumbnail"><img src="../Assets/venados.png" /></div>
         <form class="login-form" method="post" action="../Control/alta.php">
 
-            <input type="text" placeholder="Correo electrónico" name="correo" />
-            <input type="text" placeholder="Contraseña" name="contra" />
-            <input type="text" placeholder="Nombre (s)" name="nombre" />
-            <input type="text" placeholder="Apellido Paterno" name="apellidop" />
-            <input type="text" placeholder="Apellido Materno" name="apellidom" />
-            <input type="text" placeholder="Numero Telefonico" name="num" />
+            <input type="text" placeholder="Correo electrónico" name="correo" required="" />
+            <input type="text" placeholder="Contraseña" name="contra" required=""/>
+            <input type="text" placeholder="Nombre (s)" name="nombre"required="" />
+            <input type="text" placeholder="Apellido Paterno" name="apellidop" required=""/>
+            <input type="text" placeholder="Apellido Materno" name="apellidom"required="" />
+            <input type="text" placeholder="Número Telefonico" name="num" required="" />
 
-            <select name="rol" id="rol" onchange="mostrarCampos()">
+            <select name="rol" id="rol" onchange="mostrarCampos()" required="">
                 <option value="">Selecciona el tipo de usuario</option>
                 <option value="egresado">Egresado</option>
                 <option value="empleador">Empleador</option>
@@ -84,17 +82,17 @@
             <input type="text" placeholder="Empresa" name="empresa" hidden id="empresa" />
             <select name="cohorte" hidden id="cohorte">
                 <option value="">Selecciona un Cohorte Generacional</option>
-                <option value="2010-2014">2010-2014</option>
-                <option value="2011-2015">2011-2015</option>
-                <option value="2012-2016">2012-2016</option>
-                <option value="2013-2017">2013-2017</option>
-                <option value="2014-2018">2014-2018</option>
-                <option value="2015-2019">2015-2019</option>
-                <option value="2016-2020">2016-2020</option>
-                <option value="2017-2021">2017-2021</option>
-                <option value="2018-2022">2018-2022</option>
-                <option value="2019-2023">2019-2023</option>
-                <option value="2020-2024">2020-2024</option>
+                <option value="2010-2014">2010-2015</option>
+                <option value="2011-2015">2011-2016</option>
+                <option value="2012-2016">2012-2017</option>
+                <option value="2013-2017">2013-2018</option>
+                <option value="2014-2018">2014-2019</option>
+                <option value="2015-2019">2015-2020</option>
+                <option value="2016-2020">2016-2021</option>
+                <option value="2017-2021">2017-2022</option>
+                <option value="2018-2022">2018-2023</option>
+                <option value="2019-2023">2019-2024</option>
+                <option value="2020-2024">2020-2025</option>
             </select>
             <button class="btn" type="submit">Alta</button>
         </form>
@@ -112,8 +110,12 @@
         empresa.hidden = true;
         if (rol === "egresado") {
             cohorte.hidden = false;
+            cohorte.required=true;
+            empresa.required=false;
         } else if (rol === "empleador") {
             empresa.hidden = false;
+            empresa.required=true;
+            cohorte.required=false;
         }
     }
     // Función para cerrar el modal

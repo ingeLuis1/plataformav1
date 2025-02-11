@@ -1,5 +1,6 @@
 <?php
-
+include('../Control/sesiones.php');
+validar_acceso(['admin']);
 
 ?>
 
@@ -103,7 +104,7 @@
                     </div>
                 </div>
             </div>
-            <div class="gallery-item" data-url="#">
+            <div class="gallery-item" data-url="estadisticasE.php">
                 <img src="https://placehold.co/400x300?text=Estadísticas" alt="Logro 3">
                 <div class="gallery-item-overlay">
                     <div class="gallery-item-text">

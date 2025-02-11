@@ -1,3 +1,8 @@
+<?php
+include '../Control/sesiones.php';
+validar_acceso(['admin']);
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -22,7 +27,7 @@
             <span class="logo-text">TESSFP</span>
         </div>
         <div class="menu">
-            <a href="../index.html">Inicio</a>
+            <a href="admin.php">Inicio</a>
             <a href="#">Contacto</a>
             <a href="../Control/cerrarSesion.php">Cerrar Sesión</a>
         </div>
@@ -127,7 +132,7 @@
     }
 
     // Ejecutar la función para obtener y mostrar los datos
-    obtenerDatos();
+    setInterval(3000,obtenerDatos());
 </script>
 </body>
 </html>

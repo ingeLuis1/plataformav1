@@ -134,7 +134,7 @@
                     x: {
                         ticks: {
                             font: {
-                                size: 14 // Cambia el tamaño de la fuente de las etiquetas del eje X
+                                size: 12 // Cambia el tamaño de la fuente de las etiquetas del eje X
                             }
                         }
                     }

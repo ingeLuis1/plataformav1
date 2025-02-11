@@ -11,8 +11,10 @@
     <meta http-equiv="Expires" content="0">
     <title>Grupos de interés</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
 </head>
 <body>
+
 <header>
     <nav>
         <div class="logo-container">
@@ -36,12 +38,11 @@
     <h1>Resultados del Cuestionario</h1>
 </div>
 
-
 <div id="contenedor"></div>
 
 <script>
     // URL del endpoint donde se encuentran los datos
-    const API_URL = "../Control/verEstadisticas.php"; // Cambia esta URL
+    const API_URL = "../Control/verEstadisticas2.php"; // Cambia esta URL
 
     async function obtenerDatos() {
         try {
@@ -77,8 +78,8 @@
                 // Contenedor de cada pregunta
                 const preguntaDiv = document.createElement("div");
                 preguntaDiv.innerHTML = `
-                        <h3>${pregunta.pregunta}</h3>
-                        <canvas id="grafico-${id}" width="300px" height="50"></canvas>
+                        <h2>${pregunta.pregunta}</h2>
+                        <canvas id="grafico-${id}" width="300" height="50" class="pastel"></canvas>
                     `;
                 seccion.appendChild(preguntaDiv);
 
@@ -90,12 +91,16 @@
 
     function crearGrafico(idCanvas, respuestas) {
         const ctx = document.getElementById(idCanvas).getContext("2d");
+
+        // Calcular el total de respuestas para obtener el porcentaje
+        const totalRespuestas = respuestas.reduce((acc, r) => acc + r.total_respuestas, 0);
+
         new Chart(ctx, {
-            type: "bar",
+            type: "pie", // Cambiar a gráfico de pastel
             data: {
                 labels: respuestas.map(r => r.opcion),
                 datasets: [{
-                    label: "Número de respuestas",
+                    label: "",
                     data: respuestas.map(r => r.total_respuestas),
                     backgroundColor: ["#4CAF50", "#FF9800", "#2196F3", "#E91E63"],
                     borderWidth: 1
@@ -103,16 +108,21 @@
             },
             options: {
                 responsive: true,
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        ticks: {
-                            stepSize: 1, // Asegura que solo se muestren números enteros
-                            precision: 0 // Evita decimales
-                        }
+                plugins: {
+                    datalabels: {
+                        formatter: (value, context) => {
+                            const porcentaje = ((value / totalRespuestas) * 100).toFixed(2);
+                            return `${value} (${porcentaje}%)`; // Muestra el número de respuestas y el porcentaje
+                        },
+                        font: {
+                            size: 14, // Tamaño de la fuente de las etiquetas
+                            weight: 'bold'
+                        },
+                        color: '#000000' // Color del texto de las etiquetas
                     }
                 }
-            }
+            },
+            plugins: [ChartDataLabels]
         });
     }
 

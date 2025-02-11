@@ -1,50 +1,60 @@
 // Acción de clic para abrir el selector de archivo
 document.getElementById('encuestaA').addEventListener('click', () => {
-    document.getElementById('fileInputA').click(); // Simula el clic en el input file
+    document.getElementById('fileInputA').click();
 });
 document.getElementById('encuestaO').addEventListener('click', () => {
-    document.getElementById('fileInputO').click(); // Simula el clic en el input file
+    document.getElementById('fileInputO').click();
+});
+document.getElementById('egresados').addEventListener('click', () => {
+    document.getElementById('fileInputEgresados').click();
+});
+document.getElementById('empleadorN').addEventListener('click', () => {
+    document.getElementById('fileInputempleadorN').click();
 });
 
+// Detectar cambio en cada input de archivo
+document.getElementById('fileInputA').addEventListener('change', function () {
+    handleFileUpload(this, "atributos");
+});
+document.getElementById('fileInputO').addEventListener('change', function () {
+    handleFileUpload(this, "objetivos");
+});
+document.getElementById('fileInputEgresados').addEventListener('change', function () {
+    handleFileUpload(this, "egresados");
+});
+document.getElementById('fileInputempleadorN').addEventListener('change', function () {
+    handleFileUpload(this, "empleadorN");
+});
 
-// Detectar el cambio de archivo seleccionado y obtener el tipo de encuesta a subir
-document.getElementById('fileInputA').addEventListener('change', () => {
-    const fileInput = document.getElementById('fileInputA');
-    const file = fileInput.files[0];
+// Función para manejar la carga de archivos
+function handleFileUpload(input, tipo) {
+    const file = input.files[0];
     if (file) {
-        // Muestra un alert con el nombre del archivo
         alert(`Archivo seleccionado: ${file.name}`);
-        // Enviar el archivo al servidor usando fetch
-        uploadFile(file, "atributos");
+        uploadFile(file, tipo);
+
+        // Restablecer el input para permitir la carga del mismo archivo otra vez
+        input.value = '';
     }
-});
-// Detectar el cambio de archivo seleccionado y obtener el tipo de encuesta a subir
-document.getElementById('fileInputO').addEventListener('change', () => {
-    const fileInput = document.getElementById('fileInputO');
-    const file = fileInput.files[0];
-    if (file) {
-        // Muestra un alert con el nombre del archivo
-        alert(`Archivo seleccionado: ${file.name}`);
-        // Enviar el archivo al servidor usando fetch
-        uploadFile(file, "objetivos");
-    }
-});
+}
+
 // Función para enviar el archivo usando fetch
 async function uploadFile(file, tipo) {
     const formData = new FormData();
     formData.append("encuestaFile", file);
-    formData.append("tipo", tipo);//indica el tipo de encuesta que se sube
+    formData.append("tipo", tipo);
+
     try {
         const response = await fetch('../Control/altaEncuestas.php', {
             method: 'POST',
             body: formData
         });
-        const result = await response.json(); // Se espera que el servidor devuelva un JSON
+
+        const result = await response.json();
         if (result.success) {
             alert('¡Archivo cargado exitosamente!');
             document.getElementById('myModal').style.display = 'flex';
             renderTable(result.data);
-            ///Renderisar el modal para mostrar datos cargados
         } else {
             alert('Hubo un error al cargar el archivo.');
         }
@@ -54,36 +64,25 @@ async function uploadFile(file, tipo) {
     }
 }
 
-
-///Abre modal y renderisa
-
+// Renderiza la tabla en el modal
 function renderTable(data) {
     const tableBody = document.getElementById('preguntas');
     tableBody.innerHTML = '';
+
     data.forEach(pregunta => {
         const row = document.createElement('tr');
-        let opcionesHTML = ''; // Contendrá solo las opciones no vacías
+        let opcionesHTML = '';
+
         ['opcionA', 'opcionB', 'opcionC', 'opcionD', 'opcionE', 'opcionF'].forEach(opcion => {
-            if (pregunta[opcion]) { // Verifica si la opción no es null ni vacía
-                opcionesHTML += `<td>${pregunta[opcion]}</td>`;
-            } else {
-                opcionesHTML += `<td></td>`; // Celda vacía para mantener el formato
-            }
+            opcionesHTML += `<td>${pregunta[opcion] || ''}</td>`;
         });
-        row.innerHTML = `
-            <td>${pregunta.texto}</td>
-            ${opcionesHTML}
-        `;
+
+        row.innerHTML = `<td>${pregunta.texto}</td>${opcionesHTML}`;
         tableBody.prepend(row);
     });
-
-
 }
 
-///cierra modal
-
+// Cierra el modal
 document.getElementById('close').addEventListener('click', () => {
-    // Cerrar modal al hacer clic en el botón de cierre
     document.getElementById('myModal').style.display = 'none';
-
-})
+});

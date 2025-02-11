@@ -8,7 +8,6 @@ validar_acceso(['empleador']);
 
 <head>
     <link rel="icon" href="../Assets/venados.png" type="image/x-icon">
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../CSS/GI.css">
@@ -17,7 +16,6 @@ validar_acceso(['empleador']);
     <meta http-equiv="Expires" content="0">
     <title>Grupos de interés</title>
 </head>
-
 <body>
     <header>
         <nav>
@@ -45,7 +43,7 @@ validar_acceso(['empleador']);
                 <div class="gallery-item-overlay">
                     <div class="gallery-item-text">
                         <a href="#" class="gallery-item-text">
-                            Ae OE</a>
+                           OE</a>
                     </div>
                 </div>
             </div>

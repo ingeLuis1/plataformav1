@@ -70,6 +70,7 @@ validar_acceso(['admin']);
 
 
         <div class="gallery fade-in">
+
             <div class="gallery-item" data-url="#" id="encuestaA" data-type="atributos">
                 <!-- Input de tipo file para cargar archivo (oculto) -->
                 <input type="file" id="fileInputA" name="encuestaFile" accept=".xlsx" style="display:none;" />
@@ -94,6 +95,30 @@ validar_acceso(['admin']);
                     </div>
                 </div>
             </div>
+            <!--  Encuestas complementarias -->
+            <div class="gallery-item" data-url="#" id="egresados" data-type="egresados">
+                <!-- Input de tipo file para cargar archivo (oculto) -->
+                <input type="file" id="fileInputEgresados" name="encuestaFile" accept=".xlsx" style="display:none;" />
+                <img src="https://placehold.co/400x300?text=Cargar\n Encuesta" alt="Logro 1">
+                <div class="gallery-item-overlay">
+                    <div class="gallery-item-text">
+                        <a href="#" class="gallery-item-text">
+                            Encuestas egresados más de 5 años</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-url="#" id="empleadorN" data-type="empleadorN">
+                <!-- Input de tipo file para cargar archivo (oculto) -->
+                <input type="file" id="fileInputempleadorN" name="encuestaFile" accept=".xlsx" style="display:none;" />
+                <img src="https://placehold.co/400x300?text=Cargar\n Encuesta" alt="Logro 1">
+                <div class="gallery-item-overlay">
+                    <div class="gallery-item-text">
+                        <a href="#" class="gallery-item-text">
+                            Empleador sin Contratados</a>
+                    </div>
+                </div>
+            </div>
 
             <div class="gallery-item" data-url="registros.php">
                 <img src="https://placehold.co/400x300?text=Ver registros" alt="Logro 2">
@@ -104,7 +129,7 @@ validar_acceso(['admin']);
                     </div>
                 </div>
             </div>
-            <div class="gallery-item" data-url="estadisticasE.php">
+            <div class="gallery-item" data-url="#">
                 <img src="https://placehold.co/400x300?text=Estadísticas" alt="Logro 3">
                 <div class="gallery-item-overlay">
                     <div class="gallery-item-text">
@@ -114,7 +139,7 @@ validar_acceso(['admin']);
                     </div>
                 </div>
             </div>
-           
+
 
         </div>
     </main>

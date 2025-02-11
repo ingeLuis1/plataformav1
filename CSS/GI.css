@@ -23,7 +23,9 @@ header {
     background-color: var(--dark-green);
     color: var(--white);
     padding: 1rem;
-    /*position: fixed;*/
+
+    position: fixed;
+
     width: 100%;
     top: 0;
     z-index: 1000;
@@ -37,7 +39,6 @@ nav {
     align-items: center;
     max-width: 1200px;
     margin: 0 auto;
-    padding-bottom: 400px;
 }
 
 .logo-container {

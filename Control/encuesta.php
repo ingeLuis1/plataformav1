@@ -6,7 +6,7 @@ session_start();
 header("content-type:application/json");
 $pdo = conectarBD();
 $id = $_SESSION['id_usuario'];
-error_log("Valor de id_usuario: " . json_encode(($_SESSION['id_usuario'])));
+
 
 ////Buscar si ya tiene un examen resuelto
 
@@ -28,8 +28,9 @@ if ($stmt->rowCount() > 0) {
 
 } else {
     //no hay egistro hace encuesta
-    $sql = "SELECT    u.rol,    d.cohorte,d.id_usuario,    d.empresa 
-    FROM usuarios u INNER JOIN datos d ON u.id_usuario = :id where d.id_usuario=:id";
+
+    $sql = "SELECT    u.rol,    d.cohorte,d.id_usuario,    d.empresa FROM usuarios u INNER JOIN datos d ON u.id_usuario = :id";
+
     $stmt = $pdo->prepare($sql);
     $stmt->bindParam("id", $id);
     $stmt->execute();
@@ -38,15 +39,15 @@ if ($stmt->rowCount() > 0) {
     $AnioActual = date("Y");
 
     $cohorte = explode("-", $user["cohorte"]);
-    //error_log("Valor de id_usuario: " . json_encode($user["id_usuario"]));
     $cohorte = $cohorte[0];
     $aniosCohorte = intval(trim($cohorte));
     $rol = $_SESSION["rol"];
-    // error_log("Valor de encuesta: " . json_encode($rol) . "empleador ". ($aniosCohorte));
+
 
     if ($rol == 'empleador') {
         obtenerEncuestaOE($pdo);
     } else if (($AnioActual - $aniosCohorte) > 5 && $rol == 'egresado') {
+
         error_log("Este es un mensaje de depuración");
         error_log("Valor de encuesta: " . json_encode($rol) . "empleador ". ($AnioActual - $aniosCohorte));
         obtenerEncuestaOEyAE(pdo: $pdo);
@@ -56,6 +57,7 @@ if ($stmt->rowCount() > 0) {
     }
 
 }
+
 
 
 function obtenerEncuestaAE($pdo)

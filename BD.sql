@@ -31,7 +31,9 @@ CREATE TABLE `controlrespuestas` (
   `id_control` int NOT NULL,
   `id_usuario` int NOT NULL,
   `status` int NOT NULL
+
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
+
 
 -- --------------------------------------------------------
 
@@ -43,7 +45,9 @@ CREATE TABLE `cuestionarios` (
   `id_cuestionario` int NOT NULL,
   `fechaCreacion` date NOT NULL,
   `tipo` enum('atributos','objetivos') NOT NULL
+
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
+
 
 -- --------------------------------------------------------
 
@@ -60,7 +64,9 @@ CREATE TABLE `datos` (
   `id_usuario` int NOT NULL,
   `cohorte` varchar(255) NOT NULL,
   `empresa` varchar(255) NOT NULL
+
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
+
 
 --
 -- Volcado de datos para la tabla `datos`
@@ -84,7 +90,9 @@ CREATE TABLE `opciones` (
   `etiqueta` varchar(2) NOT NULL,
   `opcion` varchar(255) NOT NULL,
   `id_pregunta` int NOT NULL
+
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
+
 
 -- --------------------------------------------------------
 
@@ -96,7 +104,9 @@ CREATE TABLE `preguntas` (
   `id_pregunta` int NOT NULL,
   `pregunta` varchar(255) NOT NULL,
   `id_cuestionario` int NOT NULL
+
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
+
 
 -- --------------------------------------------------------
 
@@ -109,7 +119,9 @@ CREATE TABLE `respuestas` (
   `id_usuario` int NOT NULL,
   `id_pregunta` int NOT NULL,
   `id_opcion` int NOT NULL
+
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
+
 
 -- --------------------------------------------------------
 

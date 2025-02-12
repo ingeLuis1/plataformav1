@@ -11,6 +11,7 @@
 </head>
 
 <body>
+<<<<<<< HEAD
     <!-- Modal de error 1-->
     <div id="modalOverlay" class="modal-overlay">
         <div class="modal">
@@ -31,6 +32,8 @@
             <p>INICIO EXITOSO</p>
         </div>
     </div>
+=======
+>>>>>>> rama_jlgm
     <header>
         <nav>
             <div class="logo-container">
@@ -38,9 +41,16 @@
                 <span class="logo-text">TESSFP Ingeniería informática</span>
             </div>
             <div class="menu">
+<<<<<<< HEAD
                 <a href="../index.html">Inicio</a>
                 <a href="#">Bolsa de Trabajo</a>
                 <a href="#">Mesas de trabajo</a>
+=======
+                <a href="">Inicio</a>
+                <a href="galeria.html">Bolsa de Trabajo</a>
+                <a href="#contacto">Mesas de trabajo</a>
+                <a href="#contacto">Inicio de Sesíon</a>
+>>>>>>> rama_jlgm
             </div>
             <div class="hamburger">
                 <span></span>
@@ -67,6 +77,7 @@
     <div class="form fade-in">
         <div class="thumbnail"><img src="../Assets/venados.png" /></div>
         <form class="login-form" method="post" action="../Control/login.php">
+<<<<<<< HEAD
             <input type="text" placeholder="Correo" name="user" />
             <input type="password" placeholder="Password" name="pass" />
             <div class="form-links">
@@ -82,7 +93,31 @@
     <script src="../JS/modales.js"></script>
 
 
+=======
+            <input type="text" placeholder="username" name="user" />
+            <input type="password" placeholder="password" name="pass" />
+            <a href="#" >
+                <spam class="logo-text">No tienes Cuenta?</spam>
+            </a>
+            <button type="submit" class="btn">login</button>
+            
+        </form>
+    </div>
+    </main>
+    <script src="JS/index.js"></script>
+    <script>
+        // Función para cerrar el modal
+        function closeModal() {
+            document.getElementById('modalOverlay').style.display = 'none';
+        }
+>>>>>>> rama_jlgm
 
+        // Mostrar el modal si 'error=1' está en la URL
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('error') === '1') {
+            document.getElementById('modalOverlay').style.display = 'block';
+        }
+    </script>
 
 </body>
 

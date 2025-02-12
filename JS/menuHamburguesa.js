@@ -7,6 +7,28 @@ hamburger.addEventListener('click', () => {
     hamburger.classList.toggle('active');
 });
 
+
+document.addEventListener('DOMContentLoaded', () => {
+    const hamburger = document.querySelector('.hamburger');
+    const menu = document.querySelector('.menu');
+    const menuLinks = document.querySelectorAll('.menu a');
+
+    hamburger.addEventListener('click', () => {
+        menu.classList.toggle('active');
+        hamburger.classList.toggle('active');
+    });
+
+    // Cierra el menú cuando se hace clic en un enlace
+    menuLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            menu.classList.remove('active');
+            hamburger.classList.remove('active');
+        });
+    });
+});
+
+
+
 // Modal de imagen
 const modal = document.getElementById('imageModal');
 const modalImg = document.getElementById('modalImage');

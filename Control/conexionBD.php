@@ -4,8 +4,11 @@
 $host = "localhost";
 $db = "u386652371_academia";
 $user = "u386652371_root";
-
 $pass = "123academiaII";
+
+$db = "academia";
+$user = "root";
+$pass = "sasa";
 
 $cdb = "mysql:host=$host;dbname=$db;charset=utf8mb4";///Conexion
 ///Crear PDO accesso a base de datos, seguro

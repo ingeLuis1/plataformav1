@@ -7,7 +7,7 @@ header("content-type:application/json");
 $pdo = conectarBD();
 $id = $_SESSION['id_usuario'];
 
-
+$tipo = $_POST['tipo'];
 ////Buscar si ya tiene un examen resuelto
 
 $sql = "SELECT * FROM `controlrespuestas` WHERE id_usuario=:id";
@@ -24,11 +24,8 @@ if ($stmt->rowCount() > 0) {
         'message' => 'listo'
     ]);
     exit;
-
-
 } else {
     //no hay egistro hace encuesta
-
     $sql = "SELECT    u.rol,    d.cohorte,d.id_usuario,    d.empresa FROM usuarios u 
     INNER JOIN datos d ON u.id_usuario = :id where d.id_usuario=:id";
 
@@ -38,20 +35,18 @@ if ($stmt->rowCount() > 0) {
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
     ///Verificar si tiene mas de 5 años de egresado para aplicar ambos cuestionarios de lo contrario aplicar el de AE unicamente
     $AnioActual = date("Y");
-
     $cohorte = explode("-", $user["cohorte"]);
     $cohorte = $cohorte[0];
     $aniosCohorte = intval(trim($cohorte));
-    $rol = $_SESSION["rol"];
-
-
-    if ($rol == 'empleador') {
-        obtenerEncuestaOE($pdo);
+    $rol = $_SESSION['rol'];
+    if ($rol == 'empleador' && $tipo == 'objetivos') {
+        obtenerEncuestaOE($pdo, "objetivos");
+    } else if ($rol == 'empleador' && $tipo == 'empleadorN') {
+        obtenerEncuestaOE($pdo, "empleadorN");
     } else if (($AnioActual - $aniosCohorte) > 5 && $rol == 'egresado') {
-
         error_log("Este es un mensaje de depuración");
-        error_log("Valor de encuesta: " . json_encode($rol) . "empleador ". ($AnioActual - $aniosCohorte));
-        obtenerEncuestaOEyAE(pdo: $pdo);
+        error_log("Valor de encuesta: " . json_encode($rol) . "empleador " . ($AnioActual - $aniosCohorte));
+        obtenerEncuestaOEyAE($pdo, ['atributos', 'egresados']);
 
     } else {
         obtenerEncuestaAE($pdo);
@@ -99,9 +94,9 @@ function obtenerEncuestaAE($pdo)
     echo json_encode(array_values($preguntas), JSON_PRETTY_PRINT);
 }
 
-function obtenerEncuestaOEyAE($pdo)
+function obtenerEncuestaOEyAE($pdo, $tipos)
 {
-    $tipos = ["atributos", "objetivos"];
+    //  $tipos = ["atributos", "objetivos"];
     $preguntasFinales = [];
     foreach ($tipos as $tipo) {
         $sql = "SELECT `id_cuestionario` FROM `cuestionarios` WHERE tipo = :tipo ORDER BY id_cuestionario DESC LIMIT 1";
@@ -142,9 +137,8 @@ function obtenerEncuestaOEyAE($pdo)
     echo json_encode(array_values($preguntasFinales), JSON_PRETTY_PRINT);
 }
 
-function obtenerEncuestaOE($pdo)
+function obtenerEncuestaOE($pdo, $tipoE)
 {
-    $tipoE = "objetivos";
     $sql = "SELECT `id_cuestionario` FROM `cuestionarios`  WHERE tipo = :tipo ORDER BY id_cuestionario DESC LIMIT 1 ";
     $stmt = $pdo->prepare($sql);
     $stmt->bindParam("tipo", $tipoE);

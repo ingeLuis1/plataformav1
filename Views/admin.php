@@ -28,8 +28,8 @@ validar_acceso(['admin']);
                 <span class="logo-text">TESSFP</span>
             </div>
             <div class="menu">
-                <a href="../index.html">Inicio</a>
-                <a href="#">Contacto</a>
+            <a href="../Control/login.php">Inicio</a>
+            <a href="#">Contacto</a>
                 <a href="../Control/cerrarSesion.php">Cerrar Sesión</a>
             </div>
             <div class="hamburger">

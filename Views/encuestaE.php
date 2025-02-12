@@ -27,8 +27,8 @@ validar_acceso(['egresado', 'empleador']);
                 <span class="logo-text">TESSFP Ingeniería informática</span>
             </div>
             <div class="menu">
-                <a href="../index.html">Inicio</a>
-                <a href="#">Bolsa de Trabajo</a>
+            <a href="../Control/login.php">Inicio</a>
+            <a href="#">Bolsa de Trabajo</a>
                 <a href="#">Mesas de trabajo</a>
             </div>
             <div class="hamburger">

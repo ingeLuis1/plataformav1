@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "Solo se permiten archivos PDF.";
             exit;
         }
-
+$id=$_SESSION['id_usuario'];
         // Mover el archivo a la carpeta de destino
         if (move_uploaded_file($file["tmp_name"], $filePath)) {
             echo "Archivo subido correctamente: " . $filePath;
@@ -35,11 +35,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $fecha = date("Y-m-d");
 
             // Sentencia preparada para insertar en la base de datos
-            $sql = "INSERT INTO bolsa (titulo, archivo, tipo) VALUES (:titulo, :ruta, :fecha)";
+            $sql = "INSERT INTO bolsa (titulo, archivo, tipo,id_usuario) VALUES (:titulo, :ruta, :fecha,:id)";
             $stmt = $conexion->prepare($sql);
             $stmt->bindParam(':titulo', $titulo);
             $stmt->bindParam(':ruta', $ruta);
             $stmt->bindParam(':fecha', $fecha);
+            $stmt->bindParam(':id', $id);
 
             if ($stmt->execute()) {
                 echo "Datos insertados correctamente.";

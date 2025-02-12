@@ -62,7 +62,7 @@ $nombre = $user['nombre'] . " " . $user['apellidoP'] . " " . $user['apellidoM'];
                     </div>
                 </div>
             </div>
-            <div class="gallery-item" data-url="#">
+            <div class="gallery-item" data-url="bolsaC.php">
                 <img src="https://placehold.co/400x300?text=Bolsa de Trabajo" alt="Logro 2">
                 <div class="gallery-item-overlay">
                     <div class="gallery-item-text">

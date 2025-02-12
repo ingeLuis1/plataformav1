@@ -27,9 +27,19 @@ validar_acceso(['egresado', 'empleador']);
                 <span class="logo-text">TESSFP Ingeniería informática</span>
             </div>
             <div class="menu">
-                <a href="../index.html">Inicio</a>
-                <a href="#">Bolsa de Trabajo</a>
-                <a href="#">Mesas de trabajo</a>
+
+
+                <?php
+                if ($_SESSION['rol'] == 'empleador') {
+                    echo('<a href="../Views/egresado.php">Inicio</a>');
+
+                } else if ($_SESSION['rol'] == 'egresado') {
+                    echo('<a href="../Views/empleador.php">Inicio</a>');
+
+                }
+                ?>
+
+
             </div>
             <div class="hamburger">
                 <span></span>

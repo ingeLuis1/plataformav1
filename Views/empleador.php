@@ -47,7 +47,7 @@ validar_acceso(['empleador']);
                     </div>
                 </div>
             </div>
-            <div class="gallery-item" data-url="#">
+            <div class="gallery-item" data-url="bolsaA.php">
                 <img src="https://placehold.co/400x300?text=AgregarVacantetrabajo" alt="Logro 2">
                 <div class="gallery-item-overlay">
                     <div class="gallery-item-text">

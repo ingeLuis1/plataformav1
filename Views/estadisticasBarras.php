@@ -1,8 +1,3 @@
-<?php
-include '../Control/sesiones.php';
-validar_acceso(['admin']);
-?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -16,6 +11,7 @@ validar_acceso(['admin']);
     <meta http-equiv="Expires" content="0">
     <title>Grupos de interés</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
 </head>
 <body>
 <header>
@@ -25,7 +21,7 @@ validar_acceso(['admin']);
             <span class="logo-text">TESSFP</span>
         </div>
         <div class="menu">
-            <a href="admin.php">Inicio</a>
+            <a href="../index.html">Inicio</a>
             <a href="#">Contacto</a>
             <a href="../Control/cerrarSesion.php">Cerrar Sesión</a>
         </div>
@@ -46,7 +42,7 @@ validar_acceso(['admin']);
 
 <script>
     // URL del endpoint donde se encuentran los datos
-    const API_URL = "../Control/verEstadisticas.php"; // Cambia esta URL
+    const API_URL = "../Control/verEstadisticas2.php"; // Cambia esta URL
 
     async function obtenerDatos() {
         try {
@@ -82,7 +78,7 @@ validar_acceso(['admin']);
                 // Contenedor de cada pregunta
                 const preguntaDiv = document.createElement("div");
                 preguntaDiv.innerHTML = `
-                        <h3>${pregunta.pregunta}</h3>
+                        <h1>${pregunta.pregunta}</h1>
                         <canvas id="grafico-${id}" width="300px" height="50"></canvas>
                     `;
                 seccion.appendChild(preguntaDiv);
@@ -95,12 +91,16 @@ validar_acceso(['admin']);
 
     function crearGrafico(idCanvas, respuestas) {
         const ctx = document.getElementById(idCanvas).getContext("2d");
+
+        // Calcular el total de respuestas para obtener el porcentaje
+        const totalRespuestas = respuestas.reduce((acc, r) => acc + r.total_respuestas, 0);
+
         new Chart(ctx, {
             type: "bar",
             data: {
                 labels: respuestas.map(r => r.opcion),
                 datasets: [{
-                    label: "Número de respuestas",
+                    label: "",
                     data: respuestas.map(r => r.total_respuestas),
                     backgroundColor: ["#4CAF50", "#FF9800", "#2196F3", "#E91E63"],
                     borderWidth: 1
@@ -108,6 +108,21 @@ validar_acceso(['admin']);
             },
             options: {
                 responsive: true,
+                plugins: {
+                    datalabels: {
+                        anchor: 'end', // Posicionar las etiquetas dentro de la barra
+                        align: 'end',  // Alineación dentro de la barra
+                        formatter: (value, context) => {
+                            const porcentaje = ((value / totalRespuestas) * 100).toFixed(2);
+                            return `${value} (${porcentaje}%)`; // Muestra el número de respuestas y el porcentaje
+                        },
+                        font: {
+                            size: 24, // Cambia el tamaño de la fuente de las etiquetas
+                            weight: 'bold'
+                        },
+                        color: '#000000' // Color del texto de las etiquetas
+                    }
+                },
                 scales: {
                     y: {
                         beginAtZero: true,
@@ -115,14 +130,23 @@ validar_acceso(['admin']);
                             stepSize: 1, // Asegura que solo se muestren números enteros
                             precision: 0 // Evita decimales
                         }
+                    },
+                    x: {
+                        ticks: {
+                            font: {
+                                size: 12 // Cambia el tamaño de la fuente de las etiquetas del eje X
+                            }
+                        }
                     }
                 }
-            }
+            },
+            plugins: [ChartDataLabels]
         });
     }
 
+
     // Ejecutar la función para obtener y mostrar los datos
-    setInterval(3000,obtenerDatos());
+    obtenerDatos();
 </script>
 </body>
 </html>

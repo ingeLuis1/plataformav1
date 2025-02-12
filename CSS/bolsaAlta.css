@@ -1,0 +1,143 @@
+.CajaS {
+    width: 100%;
+    max-width: 400px;  /* Ajusta el ancho máximo */
+    padding: 10px;
+    font-size: 13px;
+    border: 2px solid #d5e7f3;  /* Borde de color azul */
+    border-radius: 8px;  /* Bordes redondeados */
+    outline: none;
+    transition: all 0.3s ease-in-out;
+}
+
+.CajaS:focus {
+    border-color: #2980b9;  /* Color del borde al enfocar */
+    box-shadow: 0px 0px 8px rgba(52, 152, 219, 0.5);
+}
+/* Button*/
+
+.save-button {
+    background-color: #28a745; /* Verde */
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.save-button:hover {
+    background-color: #218838; /* Verde más oscuro al pasar el mouse */
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.3);
+}
+
+.save-button:active {
+    background-color: #1e7e34;
+    transform: scale(0.95);
+}
+
+/*          caja division */
+.container {
+    display: flex;
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.left, .right {
+    width: 50%;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Estilo para el lado izquierdo */
+.left {
+    background-color: #6da8d0d2;
+    color: white;
+}
+
+/* Estilo para el lado derecho */
+.right {
+    background-color: #50b67ad3;
+    color: white;
+}
+
+/* Diseño responsivo: en pantallas pequeñas, apila los divs */
+@media (max-width: 600px) {
+    .container {
+        flex-direction: column;
+    }
+    .left, .right {
+        width: 100%;
+    }
+}
+
+/**    boton */
+
+.upload-button {
+    background-color: #d32f2f; /* Rojo */
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.upload-button:hover {
+    background-color: #b71c1c; /* Rojo más oscuro */
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.3);
+}
+
+.upload-button:active {
+    background-color: #9a0007;
+    transform: scale(0.95);
+}
+
+/* Ocultar el input de archivo */
+.upload-input {
+    display: none;
+}
+
+/**    lista de  */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    background: #f9f9f9;
+    color: #000;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #5e5353;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.delete-btn {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.delete-btn:hover {
+    background-color: darkred;
+}

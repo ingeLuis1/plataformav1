@@ -1,6 +1,5 @@
 /* Form */
 :root {
-<<<<<<< HEAD
     --lime-green: #7B1E25;
     --dark-green: #4A0E14;
     --light-gray: #d3d3d3;
@@ -10,15 +9,6 @@
 
 
 
-=======
-    --lime-green: #c8ff00;
-    --dark-green: #2c5e1a;
-    --light-gray: #d3d3d3;
-    --dark-gray: #333333;
-    --white: #ffffff;
-}
-
->>>>>>> rama_jlgm
 * {
     margin: 0;
     padding: 0;
@@ -32,7 +22,6 @@ body {
     background-color: var(--light-gray);
 }
 
-<<<<<<< HEAD
 .form-links {
     display: flex;
     justify-content: space-between;
@@ -51,19 +40,13 @@ body {
     text-decoration: underline;
 }
 
-=======
->>>>>>> rama_jlgm
 header {
     background-color: var(--dark-green);
     color: var(--white);
     padding: 1rem;
-<<<<<<< HEAD
 
     position: fixed;
 
-=======
-    position: fixed;
->>>>>>> rama_jlgm
     width: 100%;
     top: 0;
     z-index: 1000;
@@ -92,11 +75,7 @@ nav {
 .logo-text {
     font-size: 1.5rem;
     font-weight: bold;
-<<<<<<< HEAD
     color: var(--white);
-=======
-    color: var(--lime-green);
->>>>>>> rama_jlgm
 }
 
 .menu {
@@ -157,11 +136,7 @@ h1 {
     display: inline-block;
     padding: 0.8rem 1.5rem;
     background-color: var(--lime-green);
-<<<<<<< HEAD
     color: var(--white);
-=======
-    color: var(--dark-green);
->>>>>>> rama_jlgm
     text-decoration: none;
     border-radius: 5px;
     transition: background-color 0.3s ease, transform 0.3s ease;
@@ -170,11 +145,7 @@ h1 {
 }
 
 .btn:hover {
-<<<<<<< HEAD
     background-color: var(--white);
-=======
-    background-color: var(--dark-green);
->>>>>>> rama_jlgm
     color: var(--lime-green);
     transform: translateY(-3px);
 }
@@ -245,7 +216,6 @@ h1 {
 
 
 }
-<<<<<<< HEAD
 
 /* Estilo para el fondo del modal */
 .modal-overlay {
@@ -257,23 +227,10 @@ h1 {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 1000;
-=======
-/* Estilo para el fondo del modal */
-.modal-overlay {
-	display: none;
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background-color: rgba(0, 0, 0, 0.5);
-	z-index: 1000;
->>>>>>> rama_jlgm
 }
 
 /* Estilo del modal */
 .modal {
-<<<<<<< HEAD
     background-color: white;
     padding: 20px;
     width: 300px;
@@ -281,32 +238,15 @@ h1 {
     border-radius: 8px;
     text-align: center;
     position: relative;
-=======
-	background-color: white;
-	padding: 20px;
-	width: 300px;
-	margin: 100px auto;
-	border-radius: 8px;
-	text-align: center;
-	position: relative;
->>>>>>> rama_jlgm
 }
 
 /* Botón de cerrar */
 .close-button {
-<<<<<<< HEAD
     position: absolute;
     top: 10px;
     right: 10px;
     cursor: pointer;
     font-size: 18px;
-=======
-	position: absolute;
-	top: 10px;
-	right: 10px;
-	cursor: pointer;
-	font-size: 18px;
->>>>>>> rama_jlgm
 }
 
 
@@ -320,13 +260,9 @@ h1 {
     }
 }
 
-<<<<<<< HEAD
 .form input,
 select,
 option {
-=======
-.form input, select,option{
->>>>>>> rama_jlgm
     outline: 0;
     background: #f2f2f2;
     width: 100%;

@@ -1,9 +1,10 @@
 <?php
-session_start();
 
 $session_expiration_time = 1800; //en segundos
 // Establecer el tiempo máximo de vida de la sesión (en segundos) desde el servidor
 ini_set('session.gc_maxlifetime', $session_expiration_time);
+session_start();
+
 // Comprobar si la sesin ha expirado por inactividad (más de 30 minutos)
 if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY']) > $session_expiration_time) {
     // Si ha pasado más de 30 minutos desde la última actividad, destruir la sesión

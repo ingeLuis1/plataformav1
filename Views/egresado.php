@@ -50,7 +50,7 @@ $nombre = $user['nombre'] . " " . $user['apellidoP'] . " " . $user['apellidoM'];
     </header>
     <main>
         <h1 class="fade-in">Egresados</h1>
-        <h3 class="padding-bottom: 20px">nombre: <?php echo ($nombre) ?></h3>
+        <h3 style="padding-bottom: 20px;">Nombre: <?php echo ($nombre); ?></h3>
         <div>
         <div class="gallery fade-in">
             <div class="gallery-item" data-url="encuestaE.php">
